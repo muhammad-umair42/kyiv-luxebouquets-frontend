@@ -1,0 +1,340 @@
+/* ---------------------------------Typography ------------------------------------------*/
+h1 {
+  font-size: 6.7rem;
+}
+h2 {
+  font-size: 5rem;
+}
+h3 {
+  font-size: 3.8rem;
+}
+h4 {
+  font-size: 2.8rem;
+}
+h5 {
+  font-size: 2.1rem;
+}
+h6 {
+  font-size: 1.6rem;
+}
+
+.--subtitle {
+  font-size: 1.8rem;
+}
+
+.--overline {
+  font-size: 1.4rem;
+  text-transform: uppercase;
+}
+
+.--caption {
+  font-size: 1.4rem;
+}
+
+.--caption-sm {
+  font-size: 1.2rem;
+}
+
+body {
+  line-height: 1.4;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.--subtitle,
+.--overline,
+.--caption,
+.--caption-sm {
+  line-height: 1.2;
+}
+
+h1,
+h2 {
+  font-weight: 600;
+}
+h3,
+h4,
+h5,
+h6,
+.--subtitle,
+.--overline,
+.--caption-sm {
+  font-weight: 500;
+}
+
+.--black-90 {
+  filter: brightness(90%);
+}
+.--weight-regular {
+  font-weight: 400;
+}
+
+/* ----------------------------Link Text Slide up effect----------------------------------------------------- */
+/* In link the text slide up effect happens when we hover link text. */
+/* --dynamic-hover comes where we want same effect but when hover on parent not on text */
+
+.link--dynamic-hover {
+}
+
+.link {
+  display: block;
+  height: 1.6rem !important;
+  font-size: 1.4rem;
+  font-weight: 500;
+  line-height: 1.2;
+  text-align: center;
+  overflow: hidden;
+}
+
+.link__text,
+.link__text--hovered {
+  display: block;
+  transition: all 0.3s ease-in-out;
+}
+
+.link__text--hovered {
+  color: #808080;
+}
+
+.link:hover .link__text,
+.link:hover .link__text--hovered,
+.link--dynamic-hover:hover .link__text,
+.link--dynamic-hover:hover .link__text--hovered {
+  transform: translateY(-100%);
+}
+/*-------------------------------------Buttons -----------------------------------------------*/
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.2rem 2.3rem;
+  font-size: 1.6rem;
+  text-transform: uppercase;
+  line-height: 120%;
+  font-weight: 500;
+  transition: all 0.3s ease-in;
+  cursor: pointer;
+}
+
+.btn--primary {
+  background-color: #121212;
+  color: white !important;
+}
+
+.btn--secondary {
+  border: 1px solid black;
+  color: #121212;
+}
+
+.btn--tertiary {
+  border: 1px solid white;
+  color: white;
+}
+
+.btn--primary:hover {
+  background-color: #808080;
+  color: white;
+}
+.btn--primary:hover .link__text--hovered {
+  color: white;
+}
+.btn--secondary:hover {
+  background-color: #121212;
+  color: white;
+}
+
+.btn--secondary:hover .link__text--hovered {
+  color: white;
+}
+
+.btn--tertiary:hover {
+  background-color: white;
+  color: #121212;
+}
+
+.btn--tertiary:hover .link__text--hovered {
+  color: black;
+}
+
+/*-------------------------------------- Button__arrow------------------------------- */
+
+.btn__arrow--dynamic {
+}
+
+.btn__arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  gap: 0.4rem;
+  font-size: 1.6rem;
+}
+
+.btn__arrow--dynamic:hover .btn__arrow--odd {
+  transform: translateX(-50%);
+  transition: all 0.3s ease-in-out;
+}
+.btn__arrow--dynamic:hover .btn__arrow--even {
+  transform: translateX(50%);
+  transition: all 0.3s ease-in-out;
+}
+
+.btn__arrow--dynamic:hover .btn__arrow span {
+  text-decoration: underline;
+  color: #808080;
+}
+
+/*-------------------------------------------Inputs-------------------------------- */
+
+.input--primary {
+  width: 100%;
+  padding: 1.6rem;
+  border: 1px solid #d2d2d7;
+  color: #808080;
+  outline: none;
+  transition: all 0.3s ease-in-out;
+}
+
+.input--primary:hover {
+  border-color: #808080;
+}
+
+.input--primary:focus {
+  border-color: #121212;
+  color: #333;
+}
+
+.input--primary:invalid {
+  border: 1.5px solid red;
+  border-radius: 0.5rem;
+}
+
+/*----------------------------------------- Info Card------------------------------ */
+.info__card {
+  padding: 8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  align-items: flex-start;
+  justify-content: flex-start;
+  border: 0px solid black;
+  border-width: 0 0 1px 1px;
+}
+
+/*-------------------------------  Animations --------------------------------------------*/
+.--animated-text {
+  animation: animated-text 1.5s;
+  transform-origin: left;
+}
+
+.--animated-border {
+  animation: animated-border 2s ease-out;
+  transform-origin: bottom;
+}
+.--animated-imgShow {
+  animation: animated-imgShow 1.5s;
+  transform-origin: bottom;
+}
+.--animated-imgZoom {
+  animation: animated-imgZoom 1s;
+}
+@keyframes animated-text {
+  from {
+    opacity: 0;
+    transform: scale3d(1, 0, 1);
+  }
+  to {
+    transform: scale3d(1, 1, 1);
+    opacity: 1;
+  }
+}
+
+@keyframes animated-imgShow {
+  from {
+    opacity: 0;
+    transform: scale3d(1, 0, 1);
+  }
+  to {
+    transform: scale3d(1, 1, 1);
+    opacity: 1;
+  }
+}
+
+@keyframes animated-imgZoom {
+  from {
+    transform: scale3d(1.5, 1.5, 1);
+  }
+  to {
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+@keyframes animated-border {
+  0% {
+    border-color: white;
+  }
+  70% {
+    border-color: white;
+  }
+  100% {
+    border-color: black;
+  }
+}
+/* -----------------------------Media-queries------------------------- */
+
+@media screen and (max-width: 520px) {
+  h1 {
+    font-size: 4rem;
+  }
+  h2 {
+    font-size: 3.4rem;
+  }
+  h3 {
+    font-size: 2.6rem;
+  }
+  h4 {
+    font-size: 2.2rem;
+  }
+  h5,
+  .--subtitle {
+    font-size: 1.8rem;
+  }
+  h6,
+  body {
+    font-size: 1.6rem;
+  }
+  .--caption,
+  .btn {
+    font-size: 1.4rem;
+  }
+  .--overline,
+  .--caption-sm {
+    font-size: 1.2rem;
+  }
+  .--subtitle,
+  body {
+    line-height: 1.4;
+  }
+  h1,
+  h2 {
+    font-weight: 500;
+  }
+  h3,
+  h4,
+  body,
+  .--caption {
+    font-weight: 400;
+  }
+  .input--primary {
+    padding: 1.2rem 1.6rem;
+  }
+  .info__card {
+    padding: 4rem 1.6rem;
+    border-width: 0 0 1px 0;
+  }
+}

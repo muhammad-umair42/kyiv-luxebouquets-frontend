@@ -1,0 +1,99 @@
+.sign-in {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.sign-in__wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 4rem;
+  padding: 8rem;
+}
+
+.sign-in__login-details {
+  width: 60%;
+}
+
+.sign-in__input-container form {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 1rem;
+  flex-direction: column;
+  padding: 0 0 4rem;
+  border-bottom: 1px solid black;
+}
+
+.sign-in__other-options {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.forgot-password,
+.sign-up__option {
+  text-align: center;
+  padding: 1rem;
+  cursor: pointer;
+  border-bottom: 1px solid #808080;
+  width: 40%;
+}
+
+.sign-in__btn {
+  width: 100%;
+}
+
+.sign-in__other-methods {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding-top: 2rem;
+  gap: 1rem;
+}
+
+.sign-in__other-methods__wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 2rem;
+}
+
+.btn__apple-signIn,
+.btn__google-signIn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+@media screen and (max-width: 990px) {
+  .sign-in__login-details {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .sign-in__other-methods__wrapper {
+    flex-direction: column;
+  }
+  .sign-in__wrapper {
+    padding: 4rem;
+  }
+  .sign-in__other-methods,
+  .sign-in__other-methods__wrapper,
+  .btn__apple-signIn,
+  .btn__google-signIn {
+    width: 100%;
+  }
+}
