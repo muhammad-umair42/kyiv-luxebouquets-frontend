@@ -1,8 +1,5 @@
-# React + Vite
+# Under Development
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Figma Design: https://www.figma.com/file/qbwkSnCjwYUaBxt6WP40PL/eCommerce---Flower-Delivery-website-%7C-UI-%26-UX-%7C-Ui-kit-%7C-Template-(Community)?type=design&node-id=1331-6392&mode=design&t=4zPEvdvLG2lzyDGQ-0
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Converting this template into fully functional MERN application
