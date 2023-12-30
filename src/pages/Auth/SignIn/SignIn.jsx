@@ -1,9 +1,39 @@
-import LinkText from "./../../../components/LinkText/LinkText"
-import "./SignIn.css"
-import GoogleIcon from "@mui/icons-material/Google"
-import AppleIcon from "@mui/icons-material/Apple"
-import { Link } from "react-router-dom"
+import LinkText from "./../../../components/LinkText/LinkText";
+import "./SignIn.css";
+import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { makeRequest } from "../../../api/axios";
 const SignIn = () => {
+  const [loginInfo, setLoginInfo] = useState({
+    username: "",
+    password: "",
+  });
+
+  const navigate = useNavigate();
+
+  const handleSubmit = async e => {
+    e.preventDefault();
+
+    if (
+      [loginInfo.username, loginInfo.password].some(
+        field => field.trim() === "",
+      )
+    ) {
+      return alert("Please fill out all fields");
+    }
+
+    const reqParams = {
+      method: "post",
+      url: "/users/login",
+      reqData: loginInfo,
+    };
+
+    const success = await makeRequest(reqParams);
+
+    if (success) {
+      navigate("/");
+    }
+  };
   return (
     <div className="sign-in">
       <div className="sign-in__wrapper">
@@ -12,7 +42,7 @@ const SignIn = () => {
         </h2>
         <div className="sign-in__login-details">
           <div className="sign-in__input-container">
-            <form action="" className="--animated-border">
+            <form onSubmit={handleSubmit}>
               <label className="--overline" htmlFor="username">
                 Username:
               </label>
@@ -20,6 +50,10 @@ const SignIn = () => {
                 type="text"
                 name="username"
                 className="input--primary --animated-border"
+                value={loginInfo.username}
+                onChange={e =>
+                  setLoginInfo({ ...loginInfo, username: e.target.value })
+                }
               />
               <label className="--overline" htmlFor="password">
                 Password:
@@ -28,6 +62,10 @@ const SignIn = () => {
                 type="password"
                 name="password"
                 className="input--primary --animated-border"
+                value={loginInfo.password}
+                onChange={e =>
+                  setLoginInfo({ ...loginInfo, password: e.target.value })
+                }
               />
               <button
                 type="submit"
@@ -51,23 +89,10 @@ const SignIn = () => {
               </Link>
             </div>
           </div>
-          <div className="sign-in__other-methods">
-            <p className="--caption">
-              Instantly login or sign up via Google or Apple
-            </p>
-            <div className="sign-in__other-methods__wrapper">
-              <div className="btn__google-signIn btn btn--secondary --animated-border">
-                <GoogleIcon fontSize="inherit" /> Continue with google
-              </div>
-              <div className="btn__apple-signIn btn btn--secondary --animated-border">
-                <AppleIcon fontSize="inherit" /> Continue with apple
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default SignIn
+export default SignIn;
