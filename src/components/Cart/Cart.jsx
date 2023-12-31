@@ -1,12 +1,12 @@
-import "./Cart.css"
-import { useDispatch, useSelector } from "react-redux"
-import CloseIcon from "@mui/icons-material/Close"
-import { setCartOpen } from "../../app/Slices/interactionSlice"
-import { cartdataDummy } from "../../Details/Details"
-import CartItem from "./cartItem/CartItem"
+import "./Cart.css";
+import { useDispatch, useSelector } from "react-redux";
+import CloseIcon from "@mui/icons-material/Close";
+import { setCartOpen } from "../../app/Slices/interactionSlice";
+import { cartdataDummy } from "../../Details/Details";
+import CartItem from "./cartItem/CartItem";
 const Cart = () => {
-  const dispatch = useDispatch()
-  const cartOpen = useSelector(state => state.cartOpen)
+  const dispatch = useDispatch();
+  const cartOpen = useSelector(state => state.interaction.cartOpen);
   return (
     <div className={`cart ${cartOpen ? "cart--open" : ""}`}>
       <div className="cart-top" onClick={() => dispatch(setCartOpen())}>
@@ -41,7 +41,7 @@ const Cart = () => {
         <div className="cart-checkout__btn btn btn--primary ">Check Out</div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Cart
+export default Cart;

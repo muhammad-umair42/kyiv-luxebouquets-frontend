@@ -1,12 +1,36 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
-import TextIconBtn from "../TextIconBtn/TextIconBtn"
-import "./CategoryCards.css"
-const CategoryCards = ({ data }) => {
+import { useEffect, useState } from "react";
+import TextIconBtn from "../TextIconBtn/TextIconBtn";
+import "./CategoryCards.css";
+import makeRequest from "../../api/axios";
+const CategoryCards = (slice = false) => {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const reqParams = {
+        url: "/categories/",
+        method: "get",
+      };
+      const { resData, success } = await makeRequest(reqParams);
+      if (slice === true) {
+        if (data.length > 5) {
+          setData(resData.data.splice(0, 5));
+        } else {
+          setData(resData.data);
+        }
+      } else {
+        setData(resData.data);
+      }
+    };
+    fetchData();
+  }, []);
   return (
     <>
       {data.map((c, i) => (
         <div
-          key={i}
+          key={c._id}
           className={`categories btn__arrow--dynamic ${
             i % 2 === 0 ? "categories__even" : "categories__odd"
           }`}
@@ -18,12 +42,12 @@ const CategoryCards = ({ data }) => {
             </div>
           </div>
           <div className="categories__category-img --animated-border">
-            <img src={c.img} alt="" className="--animated-imgZoom" />
+            <img src={c.categoryImage} alt="" className="--animated-imgZoom" />
           </div>
         </div>
       ))}
     </>
-  )
-}
+  );
+};
 
-export default CategoryCards
+export default CategoryCards;

@@ -1,28 +1,24 @@
 /* eslint-disable react/no-unescaped-entities */
-import Layout from "../../components/Layout/Layout"
-import HeroImg from "../../assets/HeroSectionImg.jpg"
-import "./HomePage.css"
-import WhyUsCard from "./Why-us Card/WhyUsCard"
-import {
-  WhyChooseUs,
-  categoryData,
-  homePageData,
-} from "./../../Details/Details"
-import { useState } from "react"
-import WifiCalling3Icon from "@mui/icons-material/WifiCalling3"
-import MyLocationIcon from "@mui/icons-material/MyLocation"
-import ShopImg from "../../assets/Shoppic.jpg"
-import InstagramIcon from "@mui/icons-material/Instagram"
-import PinterestIcon from "@mui/icons-material/Pinterest"
-import FacebookOutlinedIcon from "@mui/icons-material/FacebookOutlined"
-import ServiceImg from "../../assets/Servicesimg.jpg"
-import FlowerRating from "../../assets/FlowerRating.png"
-import "react-responsive-carousel/lib/styles/carousel.min.css"
-import ReviewCarousel from "./../../components/Carousel/ReviewCarousel"
-import CategoryCards from "../../components/Categorycards/CategoryCards"
-import LinkText from "../../components/LinkText/LinkText"
+import Layout from "../../components/Layout/Layout";
+import HeroImg from "../../assets/HeroSectionImg.jpg";
+import "./HomePage.css";
+import WhyUsCard from "./Why-us Card/WhyUsCard";
+import { WhyChooseUs, homePageData } from "./../../Details/Details";
+import { useState } from "react";
+import WifiCalling3Icon from "@mui/icons-material/WifiCalling3";
+import MyLocationIcon from "@mui/icons-material/MyLocation";
+import ShopImg from "../../assets/Shoppic.jpg";
+import InstagramIcon from "@mui/icons-material/Instagram";
+import PinterestIcon from "@mui/icons-material/Pinterest";
+import FacebookOutlinedIcon from "@mui/icons-material/FacebookOutlined";
+import ServiceImg from "../../assets/Servicesimg.jpg";
+import FlowerRating from "../../assets/FlowerRating.png";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import ReviewCarousel from "./../../components/Carousel/ReviewCarousel";
+import CategoryCards from "../../components/Categorycards/CategoryCards";
+import LinkText from "../../components/LinkText/LinkText";
 const HomePage = () => {
-  const [userContact, setUserContact] = useState("")
+  const [userContact, setUserContact] = useState("");
 
   return (
     <>
@@ -61,7 +57,7 @@ const HomePage = () => {
             </div>
 
             <div className="hero__right">
-              <CategoryCards data={categoryData} />
+              <CategoryCards slice={true} />
             </div>
           </section>
 
@@ -249,7 +245,7 @@ const HomePage = () => {
         </div>
       </Layout>
     </>
-  )
-}
+  );
+};
 
-export default HomePage
+export default HomePage;

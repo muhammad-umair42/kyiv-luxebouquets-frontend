@@ -4,7 +4,7 @@ import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage"; // defaults to localStorage for web
 import { combineReducers } from "redux";
 
-import interactionreducer from "./Slices/interactionSlice";
+import interactionReducer from "./Slices/interactionSlice";
 import userReducer from "./Slices/userSlice";
 
 const persistConfig = {
@@ -14,7 +14,7 @@ const persistConfig = {
 };
 
 const rootReducer = combineReducers({
-  interaction: interactionreducer,
+  interaction: interactionReducer,
   user: userReducer,
 });
 

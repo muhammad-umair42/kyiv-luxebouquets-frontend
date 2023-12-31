@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import "./SignUp.css";
 import LinkText from "./../../../components/LinkText/LinkText";
 import { useState } from "react";
@@ -32,7 +33,7 @@ const SignUp = () => {
       url: "/users/register",
       reqData: registerInfo,
     };
-    const success = await makeRequest(reqParams);
+    const { resData, success } = await makeRequest(reqParams);
 
     if (success) {
       navigate("/signin", { replace: true });

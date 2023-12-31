@@ -1,24 +1,26 @@
-import MenuIcon from "@mui/icons-material/Menu"
-import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined"
-import CloseIcon from "@mui/icons-material/Close"
-import InstagramIcon from "@mui/icons-material/Instagram"
-import PinterestIcon from "@mui/icons-material/Pinterest"
-import FacebookOutlinedIcon from "@mui/icons-material/FacebookOutlined"
-import { useDispatch, useSelector } from "react-redux"
-import { setCartOpen, setNavOpen } from "../../../app/Slices/interactionSlice"
-import Cart from "../../Cart/Cart"
-import { Link } from "react-router-dom"
+import MenuIcon from "@mui/icons-material/Menu";
+import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
+import CloseIcon from "@mui/icons-material/Close";
+import InstagramIcon from "@mui/icons-material/Instagram";
+import PinterestIcon from "@mui/icons-material/Pinterest";
+import FacebookOutlinedIcon from "@mui/icons-material/FacebookOutlined";
+import { useDispatch, useSelector } from "react-redux";
+import { setCartOpen, setNavOpen } from "../../../app/Slices/interactionSlice";
+import Cart from "../../Cart/Cart";
+import { Link } from "react-router-dom";
 
 const NavHamburger = () => {
-  const dispatch = useDispatch()
-  const navOpen = useSelector(state => state.navOpen)
+  const dispatch = useDispatch();
+  const navOpen = useSelector(state => state.interaction.navOpen);
 
   return (
     <div className="hamburger">
       <div className="hamburger__menu-option">
         <div
           className="menu-option__icon"
-          onClick={() => dispatch(setNavOpen())}
+          onClick={() => {
+            dispatch(setNavOpen());
+          }}
         >
           <MenuIcon fontSize="inherit" />
         </div>
@@ -27,10 +29,7 @@ const NavHamburger = () => {
             className="nav-sidebar__sidebar-links"
             onClick={() => dispatch(setNavOpen())}
           >
-            <li
-              className="sidebar-link sidebar-link--close"
-              onClick={() => dispatch(setNavOpen())}
-            >
+            <li className="sidebar-link sidebar-link--close">
               <CloseIcon fontSize="inherit" />
             </li>
 
@@ -73,7 +72,7 @@ const NavHamburger = () => {
         <Cart />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default NavHamburger
+export default NavHamburger;

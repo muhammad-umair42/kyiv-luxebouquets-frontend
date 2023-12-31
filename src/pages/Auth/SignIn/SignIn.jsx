@@ -1,14 +1,16 @@
+/* eslint-disable no-unused-vars */
 import LinkText from "./../../../components/LinkText/LinkText";
 import "./SignIn.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { makeRequest } from "../../../api/axios";
+import { useDispatch } from "react-redux";
 const SignIn = () => {
   const [loginInfo, setLoginInfo] = useState({
     username: "",
     password: "",
   });
-
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleSubmit = async e => {
@@ -26,9 +28,11 @@ const SignIn = () => {
       method: "post",
       url: "/users/login",
       reqData: loginInfo,
+      reqType: "user",
+      dispatch: dispatch,
     };
 
-    const success = await makeRequest(reqParams);
+    const { resData, success } = await makeRequest(reqParams);
 
     if (success) {
       navigate("/");

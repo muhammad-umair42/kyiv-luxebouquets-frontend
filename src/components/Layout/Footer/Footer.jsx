@@ -1,9 +1,34 @@
-import "./Footer.css"
-import InstagramIcon from "@mui/icons-material/Instagram"
-import PinterestIcon from "@mui/icons-material/Pinterest"
-import FacebookOutlinedIcon from "@mui/icons-material/FacebookOutlined"
-import TextHoverEffect from "../../LinkText/LinkText"
+/* eslint-disable no-unused-vars */
+import "./Footer.css";
+import InstagramIcon from "@mui/icons-material/Instagram";
+import PinterestIcon from "@mui/icons-material/Pinterest";
+import FacebookOutlinedIcon from "@mui/icons-material/FacebookOutlined";
+import TextHoverEffect from "../../LinkText/LinkText";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import makeRequest from "../../../api/axios";
 const Footer = () => {
+  const user = useSelector(state => state.user.user);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const handleSpecialEmailsChange = async e => {
+    e.preventDefault();
+    if (!user) {
+      navigate("/signin", { replace: true });
+      return null;
+    }
+    console.log("here");
+    const reqParams = {
+      method: "post",
+      reqData: { specialEmails: true },
+      dispatch,
+      reqType: "user",
+      url: "/users/updatespecialemails",
+    };
+
+    const { reqData, success } = await makeRequest(reqParams);
+  };
   return (
     <footer className="footer">
       <div className="footer__newsletter --animated-border">
@@ -13,13 +38,18 @@ const Footer = () => {
           No spam or sharing your address
         </p>
         <input
-          className="input--primary --animated-border"
+          className="input--primary --animated-border footer--email-input"
           type="text"
           placeholder="Your Email"
+          disabled={user?.specialEmails || false}
         />
-        <div className="btn btn--primary link--dynamic-hover">
+        <button
+          className="btn btn--primary link--dynamic-hover footer--email-btn"
+          disabled={user?.specialEmails || false}
+          onClick={handleSpecialEmailsChange}
+        >
           <TextHoverEffect>REMIND</TextHoverEffect>
-        </div>
+        </button>
       </div>
 
       <div className="footer__contacts --animated-border">
@@ -111,7 +141,7 @@ const Footer = () => {
         </div>
       </div>
     </footer>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;
