@@ -8,27 +8,52 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import makeRequest from "../../../api/axios";
+import { useEffect, useState } from "react";
 const Footer = () => {
+  //States
   const user = useSelector(state => state.user.user);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [footerCategories, setFooterCategories] = useState(null);
+
+  //Handle categories shown in footer
+  useEffect(() => {
+    const fetchData = async () => {
+      const reqParams = {
+        url: "/categories/",
+        method: "get",
+        reqType: "getcategories",
+      };
+      const { resData, success } = await makeRequest(reqParams);
+      if (success) {
+        if (resData.length > 8) {
+          setFooterCategories(resData.splice(0, 8));
+        } else {
+          setFooterCategories(resData);
+        }
+      }
+    };
+    fetchData();
+  }, []);
+
+  //handle Special Emails user reminder
   const handleSpecialEmailsChange = async e => {
     e.preventDefault();
     if (!user) {
       navigate("/signin", { replace: true });
       return null;
     }
-    console.log("here");
     const reqParams = {
       method: "post",
       reqData: { specialEmails: true },
       dispatch,
-      reqType: "user",
+      reqType: "specialEmails",
       url: "/users/updatespecialemails",
     };
 
     const { reqData, success } = await makeRequest(reqParams);
   };
+
   return (
     <footer className="footer">
       <div className="footer__newsletter --animated-border">
@@ -94,24 +119,13 @@ const Footer = () => {
         <div className="footer__link-text">
           <TextHoverEffect>All Products</TextHoverEffect>
         </div>
-        <div className="footer__link-text">
-          <TextHoverEffect>Bouquest Fresh Flowers</TextHoverEffect>
-        </div>
-        <div className="footer__link-text">
-          <TextHoverEffect>Bouquest Dried Flowers</TextHoverEffect>
-        </div>
-        <div className="footer__link-text">
-          <TextHoverEffect>Live Plants</TextHoverEffect>
-        </div>
-        <div className="footer__link-text ">
-          <TextHoverEffect>Designer Vases</TextHoverEffect>
-        </div>
-        <div className="footer__link-text ">
-          <TextHoverEffect>Arama Candles</TextHoverEffect>
-        </div>
-        <div className="footer__link-text ">
-          <TextHoverEffect>Freshener Diffuser</TextHoverEffect>
-        </div>
+        {footerCategories &&
+          footerCategories.map(c => (
+            <div className="footer__link-text" key={c._id}>
+              <TextHoverEffect>{c.name}</TextHoverEffect>
+            </div>
+          ))}
+
         <h5>Service</h5>
         <div className="footer__link-text ">
           <TextHoverEffect>Flower Subcription</TextHoverEffect>

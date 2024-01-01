@@ -11,9 +11,10 @@ export const userSlice = createSlice({
   initialState,
   reducers: {
     setUser: (state, action) => {
-      state.user = action.payload.user;
-      state.accessToken = action.payload.accessToken;
-      state.refreshToken = action.payload.refreshToken;
+      return {
+        ...state,
+        ...action.payload,
+      };
     },
   },
 });

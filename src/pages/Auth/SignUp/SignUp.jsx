@@ -32,6 +32,7 @@ const SignUp = () => {
       method: "post",
       url: "/users/register",
       reqData: registerInfo,
+      reqType: "register",
     };
     const { resData, success } = await makeRequest(reqParams);
 

@@ -7,45 +7,55 @@ import makeRequest from "../../api/axios";
 const CategoryCards = (slice = false) => {
   const [data, setData] = useState([]);
 
+  //Getting categories
   useEffect(() => {
     const fetchData = async () => {
       const reqParams = {
         url: "/categories/",
         method: "get",
+        reqType: "getcategories",
       };
+
       const { resData, success } = await makeRequest(reqParams);
+
       if (slice === true) {
-        if (data.length > 5) {
-          setData(resData.data.splice(0, 5));
+        if (resData.length > 5) {
+          setData(resData.splice(0, 5));
         } else {
-          setData(resData.data);
+          setData(resData);
         }
       } else {
-        setData(resData.data);
+        setData(resData);
       }
     };
+
     fetchData();
   }, []);
   return (
     <>
-      {data.map((c, i) => (
-        <div
-          key={c._id}
-          className={`categories btn__arrow--dynamic ${
-            i % 2 === 0 ? "categories__even" : "categories__odd"
-          }`}
-        >
-          <div className="categories__category-details --animated-border">
-            <div className="category-details__wrapper">
-              <h3>{c.name}</h3>
-              <TextIconBtn arrow={i % 2 === 0 ? "even" : "odd"} />
+      {data &&
+        data?.map((c, i) => (
+          <div
+            key={c._id}
+            className={`categories btn__arrow--dynamic ${
+              i % 2 === 0 ? "categories__even" : "categories__odd"
+            }`}
+          >
+            <div className="categories__category-details --animated-border">
+              <div className="category-details__wrapper">
+                <h3>{c.name}</h3>
+                <TextIconBtn arrow={i % 2 === 0 ? "even" : "odd"} />
+              </div>
+            </div>
+            <div className="categories__category-img --animated-border">
+              <img
+                src={c.categoryImage}
+                alt=""
+                className="--animated-imgZoom"
+              />
             </div>
           </div>
-          <div className="categories__category-img --animated-border">
-            <img src={c.categoryImage} alt="" className="--animated-imgZoom" />
-          </div>
-        </div>
-      ))}
+        ))}
     </>
   );
 };

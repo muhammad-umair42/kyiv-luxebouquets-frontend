@@ -13,7 +13,7 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  gap: 4rem;
+  gap: 5rem;
   padding: 8rem;
 }
 
@@ -26,7 +26,7 @@
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
-  gap: 1rem;
+  gap: 2rem;
   flex-direction: column;
   padding: 0 0 4rem;
   border-bottom: 1px solid black;
@@ -42,7 +42,7 @@
 .forgot-password,
 .sign-up__option {
   text-align: center;
-  padding: 1rem;
+  padding: 2rem;
   cursor: pointer;
   border-bottom: 1px solid #808080;
   width: 40%;

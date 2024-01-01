@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import MenuIcon from "@mui/icons-material/Menu";
 import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
 import CloseIcon from "@mui/icons-material/Close";
@@ -9,7 +10,7 @@ import { setCartOpen, setNavOpen } from "../../../app/Slices/interactionSlice";
 import Cart from "../../Cart/Cart";
 import { Link } from "react-router-dom";
 
-const NavHamburger = () => {
+const NavHamburger = ({ user }) => {
   const dispatch = useDispatch();
   const navOpen = useSelector(state => state.interaction.navOpen);
 
@@ -33,9 +34,24 @@ const NavHamburger = () => {
               <CloseIcon fontSize="inherit" />
             </li>
 
-            <Link to="/signin" className="sidebar-link">
-              Sign in
-            </Link>
+            {user?.username ? (
+              <div className="sidebar-link user-details">
+                <span>{user.username}</span>
+                <div className="user--details">
+                  <div className="user--details-dashboard">
+                    {user.profilePicture && (
+                      <img src={user.profilePicture} alt="" />
+                    )}
+                    DASHBOARD
+                  </div>
+                  <div className="user--details-logout">LOGOUT</div>
+                </div>
+              </div>
+            ) : (
+              <Link to="/signin" className="sidebar-link">
+                Sign in
+              </Link>
+            )}
 
             <li className="sidebar-link">Shop</li>
             <li className="sidebar-link">Service</li>

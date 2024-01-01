@@ -98,7 +98,7 @@ const HomePage = () => {
 
           {/*---------------------------------------------- Contact Section------------------------------------------- */}
 
-          <section className="contact">
+          <section className="contact" id="contact">
             <div className="contact__left --animated-border">
               <div className="left__getdetails">
                 <h2 className="--aninmated-text">Let's Talk</h2>

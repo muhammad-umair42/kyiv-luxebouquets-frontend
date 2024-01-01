@@ -28,14 +28,14 @@ const SignIn = () => {
       method: "post",
       url: "/users/login",
       reqData: loginInfo,
-      reqType: "user",
+      reqType: "login",
       dispatch: dispatch,
     };
 
     const { resData, success } = await makeRequest(reqParams);
 
     if (success) {
-      navigate("/");
+      // navigate("/");
     }
   };
   return (
