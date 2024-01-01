@@ -1,0 +1,156 @@
+/* Elements Sharing Common */
+/* Sections Grids */
+.hero-section,
+.expertly-crafted,
+.gifts,
+.special {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+/* Sections Borders */
+.founder-passion,
+.hero__img,
+.hero-details,
+.expertly-crafted__details,
+.expertly-crafted__img,
+.gifts__details,
+.gifts__img,
+.special__details,
+.special__img,
+.discover {
+  border: 0 solid black;
+  border-width: 0 0 1px 1px;
+}
+
+/* Sections Images */
+.hero__img,
+.expertly-crafted__img,
+.gifts__img,
+.special__img {
+  height: 50vw;
+}
+
+.hero__img img,
+.expertly-crafted__img img,
+.gifts__img img,
+.special__img img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+/* Sections Details */
+.expertly-crafted__details,
+.gifts__details,
+.special__details {
+  height: 100%;
+  width: 100%;
+  flex-direction: column;
+  gap: 2rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 8rem;
+}
+
+/* Elements Sharing UnCommon Css */
+.hero-details__wrapper {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.hero-details__wrapper p {
+  text-align: center;
+  margin-top: 1rem;
+  letter-spacing: 4;
+  line-height: 2;
+}
+
+.hero-details__links {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  margin-top: 4rem;
+}
+.hero-details__link {
+  border: 1px solid black;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.4rem;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.founder-passion,
+.discover {
+  padding: 8rem;
+  gap: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.founder-passion p,
+.discover p {
+  text-align: center;
+}
+
+.discover button {
+  padding: 1.4rem 4rem;
+}
+@media screen and (max-width: 990px) {
+  .hero-section,
+  .expertly-crafted,
+  .gifts,
+  .special {
+    display: flex;
+    flex-direction: column;
+  }
+  .gifts {
+    flex-direction: column-reverse;
+  }
+
+  .hero__img,
+  .expertly-crafted__img,
+  .gifts__img,
+  .special__img {
+    height: 65vw;
+  }
+  .founder-passion,
+  .discover {
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  .founder-passion p,
+  .discover p {
+    text-align: start;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .hero__img,
+  .expertly-crafted__img,
+  .gifts__img,
+  .special__img {
+    height: 85vw;
+  }
+  .expertly-crafted__details,
+  .gifts__details,
+  .special__details,
+  .founder-passion,
+  .discover {
+    padding: 4rem;
+  }
+}

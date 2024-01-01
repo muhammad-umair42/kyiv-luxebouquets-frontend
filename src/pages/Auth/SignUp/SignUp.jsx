@@ -44,7 +44,7 @@ const SignUp = () => {
     <div className="sign-up">
       <div className="sign-up__wrapper">
         <div className="sign-up__heading">
-          <h2 className="--animated-text">Sign Up</h2>
+          <h1 className="--animated-text">Sign Up</h1>
           <p className="--caption">
             Become a member and enjoy personalized gift recommendations,fast
             checkout and more.
@@ -52,37 +52,33 @@ const SignUp = () => {
         </div>
         <div className="sign-up__input-container">
           <form onSubmit={handleSubmit}>
-            <label className="--overline" htmlFor="email">
-              Email:
-            </label>
             <input
               type="email"
               className="input--primary --animated-border"
               name="email"
               value={registerInfo.email}
+              placeholder="Email.."
               onChange={e =>
                 setRegisterInfo({ ...registerInfo, email: e.target.value })
               }
             />
-            <label className="--overline" htmlFor="username">
-              Username:
-            </label>
+
             <input
               type="text"
               className="input--primary --animated-border"
               name="username"
+              placeholder="Username..."
               value={registerInfo.username}
               onChange={e =>
                 setRegisterInfo({ ...registerInfo, username: e.target.value })
               }
             />
-            <label className="--overline" htmlFor="fullName">
-              Full Name:
-            </label>
+
             <input
               type="text"
               className="input--primary --animated-border"
               name="fullName"
+              placeholder="Full Name"
               value={registerInfo.fullName}
               onChange={e =>
                 setRegisterInfo({ ...registerInfo, fullName: e.target.value })
@@ -96,6 +92,7 @@ const SignUp = () => {
               className="input--primary --animated-border"
               name="SecretAnswer"
               value={registerInfo.secretAnswer}
+              placeholder="It will be used to recover your account"
               onChange={e =>
                 setRegisterInfo({
                   ...registerInfo,
@@ -103,13 +100,12 @@ const SignUp = () => {
                 })
               }
             />
-            <label className="--overline" htmlFor="password">
-              Password:
-            </label>
+
             <input
               type="password"
               className="input--primary --animated-border"
               name="password"
+              placeholder="Password"
               value={registerInfo.password}
               onChange={e =>
                 setRegisterInfo({ ...registerInfo, password: e.target.value })
@@ -122,6 +118,10 @@ const SignUp = () => {
               <LinkText>Join us</LinkText>
             </button>
           </form>
+        </div>
+        <div className="terms-policies">
+          <span className="--overline">Privacy Policy</span>
+          <span className="--overline">Terms And Conditions</span>
         </div>
       </div>
     </div>

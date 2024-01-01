@@ -63,13 +63,12 @@ const ForgotPassword = () => {
                 })
               }
             />
-            <label htmlFor="email" className="--overline">
-              Email:
-            </label>
+
             <input
               type="email"
               className="input--primary --animated-border"
               name="email"
+              placeholder="Your Email..."
               value={resetPasswordInfo.email}
               onChange={e =>
                 setResetPasswordInfo({
@@ -78,12 +77,11 @@ const ForgotPassword = () => {
                 })
               }
             />
-            <label htmlFor="password" className="--overline">
-              New Password:
-            </label>
+
             <input
               type="password"
               className="input--primary --animated-border"
+              placeholder="New Password..."
               value={resetPasswordInfo.newPassword}
               onChange={e =>
                 setResetPasswordInfo({
@@ -92,13 +90,12 @@ const ForgotPassword = () => {
                 })
               }
             />
-            <label htmlFor="confirm-password" className="--overline">
-              Confirm Password:
-            </label>
+
             <input
               type="password"
               className="input--primary --animated-border"
               value={confirmPassword}
+              placeholder="Confirm New Password"
               onChange={e => setConfirmPassword(e.target.value)}
             />
             <button
@@ -108,6 +105,10 @@ const ForgotPassword = () => {
               Continue
             </button>
           </form>
+        </div>
+        <div className="terms-policies">
+          <span className="--overline">Privacy Policy</span>
+          <span className="--overline">Terms And Conditions</span>
         </div>
       </div>
     </div>

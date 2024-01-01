@@ -1,5 +1,4 @@
-import DemoImg from "../assets/demobouquet.jpg"
-import cartitem from "../assets/cartItem.jpg"
+import cartitem from "../assets/cartItem.jpg";
 export const WhyChooseUs = [
   {
     title: "Stylish bouquets by florists",
@@ -17,7 +16,7 @@ export const WhyChooseUs = [
     title: "Subscription by your needs",
     desc: "With our subscription service tailored to your specific needs, you can enjoy the convenience of having beautiful bouquets delivered straight to your door at regular intervals. Our flexible service is perfect for busy individuals or those who want to ensure they always have fresh flowers on hand. You'll save time and money with this hassle-free solution to your floral needs.",
   },
-]
+];
 
 export const homePageData = {
   heroSectionImgMessage:
@@ -28,7 +27,7 @@ export const homePageData = {
     "Experience the convenience and savings of regular flower deliveries with our flexible subscription service - up to 30% more profitable than one-time purchases.",
   weddingMessage:
     "Let our team of expert florists and designers create stunning ,on-trend floral decor for your special day.Trust us to bring your vision to life.",
-}
+};
 
 export const carouselReviews = [
   {
@@ -56,30 +55,7 @@ export const carouselReviews = [
     review:
       " Ut veniam dolores sed molestiae minima sed corporis eius ut aperiam dolorum ut voluptate tempore vel consequatur voluptatum est laborum iste.",
   },
-]
-
-export const categoryData = [
-  {
-    name: "Live Flowers",
-    img: DemoImg,
-  },
-  {
-    name: "Dead Flowers",
-    img: DemoImg,
-  },
-  {
-    name: "Artificial Flowers",
-    img: DemoImg,
-  },
-  {
-    name: "Live Bouquet",
-    img: DemoImg,
-  },
-  {
-    name: "Dead Bouquet",
-    img: DemoImg,
-  },
-]
+];
 
 export const footerData = {
   newsletterMessage:
@@ -93,7 +69,7 @@ export const footerData = {
     "Designer Vases",
     "Freshner Diffuser",
   ],
-}
+};
 
 export const cartdataDummy = [
   {
@@ -120,4 +96,19 @@ export const cartdataDummy = [
     price: "100",
     img: cartitem,
   },
-]
+];
+
+export const flowerSubscriptionHero = [
+  {
+    title: "For Yourself",
+    desc: "The perfect way to keep your home fresh and beautiful. Get a regular delivery of stunning bouquets straight to your doorstep without lifting a finger. Enjoy the beauty and fragnance of fresh flowers hassle-free!",
+  },
+  {
+    title: "As a Gift",
+    desc: "Simply provide us with their address and let us take care of the rest,delivering beautiful blooms straight to their doorstep at the frequency and duration of your choosing.",
+  },
+  {
+    title: "For Business",
+    desc: "Is a great way to create pleasant atmosphere and leave a good impression on your guests and customers.Fresh floral arrangements will improve the aesthetic image of your business, and our service guarantees timely replacement without extra care or effort on your part.",
+  },
+];

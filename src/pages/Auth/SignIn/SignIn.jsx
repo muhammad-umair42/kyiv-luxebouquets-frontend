@@ -46,27 +46,25 @@ const SignIn = () => {
         </h2>
         <div className="sign-in__login-details">
           <div className="sign-in__input-container">
+            <h3>Login</h3>
             <form onSubmit={handleSubmit}>
-              <label className="--overline" htmlFor="username">
-                Username:
-              </label>
               <input
                 type="text"
                 name="username"
                 className="input--primary --animated-border"
                 value={loginInfo.username}
+                placeholder="Username..."
                 onChange={e =>
                   setLoginInfo({ ...loginInfo, username: e.target.value })
                 }
               />
-              <label className="--overline" htmlFor="password">
-                Password:
-              </label>
+
               <input
                 type="password"
                 name="password"
                 className="input--primary --animated-border"
                 value={loginInfo.password}
+                placeholder="Password..."
                 onChange={e =>
                   setLoginInfo({ ...loginInfo, password: e.target.value })
                 }
@@ -93,6 +91,10 @@ const SignIn = () => {
               </Link>
             </div>
           </div>
+        </div>
+        <div className="terms-policies">
+          <span className="--overline">Privacy Policy</span>
+          <span className="--overline">Terms And Conditions</span>
         </div>
       </div>
     </div>

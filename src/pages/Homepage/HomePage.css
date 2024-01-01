@@ -65,6 +65,8 @@
 .left__bottom--hero .bottom__img img {
   width: 100%;
   height: 100%;
+  filter: grayscale(100%);
+  -webkit-filter: grayscale(100%);
 }
 
 .left__bottom--hero .bottom__caption {
@@ -76,18 +78,21 @@
 
 /*---------------------------------------------- About-Us Section---------------------------------------------- */
 
-.about {
+.about,
+.whyus {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 50% 50%;
   overflow: visible;
 }
 
-.about__left {
+.about__left,
+.whyus-left {
   border: 0 solid black;
   border-width: 0 0 1px 1px;
 }
 
-.about__left h2 {
+.about__left h2,
+.whyus-left h2 {
   padding: 8rem;
   position: sticky;
   top: 8rem;
@@ -114,25 +119,6 @@
 
 .about__btn {
   margin-top: 6.4rem;
-}
-
-/*----------------------------------------------------- Why Choose Us Section-------------------------------------------- */
-
-.whyus {
-  display: grid;
-  grid-template-columns: 50% 50%;
-  overflow: visible;
-}
-
-.whyus-left {
-  border: 0 solid black;
-  border-width: 0 0 1px 1px;
-}
-
-.whyus-left h2 {
-  padding: 8rem;
-  position: sticky;
-  top: 8rem;
 }
 
 /*-------------------------------------------------- Contact Section ------------------------------------------ */
@@ -318,7 +304,7 @@
       rgba(18, 18, 18, 0.35),
       rgba(18, 18, 18, 0.35)
     ),
-    url("../../assets/ServicesFooterImg.jpg");
+    url("../../assets/home4.jpg");
   background-repeat: no-repeat;
   background-size: auto, cover;
   background-position: center;

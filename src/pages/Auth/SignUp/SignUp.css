@@ -14,7 +14,7 @@
   align-items: center;
   justify-content: flex-start;
   flex-direction: column;
-  gap: 2rem;
+  gap: 4rem;
 }
 
 .sign-up__heading {
@@ -38,6 +38,25 @@
 .sign-up__btn {
   margin-top: 3rem;
   width: 100%;
+}
+
+.terms-policies {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.terms-policies span {
+  padding: 1rem 4rem;
+  cursor: pointer;
+}
+
+.terms-policies span:hover {
+  text-decoration: underline;
+}
+
+.terms-policies span:last-child {
+  border-left: 1px solid black;
 }
 
 @media screen and (max-width: 990px) {

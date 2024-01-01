@@ -16,7 +16,7 @@ const Navbar = () => {
           <div className="left__item  link--dynamic-hover">
             <LinkText>Shop</LinkText>
           </div>
-          <a href="#contact">
+          <a href="/#contact">
             {" "}
             <div className="left__item link--dynamic-hover">
               <LinkText>Contact</LinkText>

@@ -11,16 +11,23 @@
   height: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   flex-direction: column;
   gap: 5rem;
   padding: 8rem;
 }
 
 .sign-in__login-details {
-  width: 60%;
+  width: 50%;
 }
 
+.sign-in__input-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 2rem;
+}
 .sign-in__input-container form {
   width: 100%;
   display: flex;
@@ -52,6 +59,24 @@
   width: 100%;
 }
 
+.terms-policies {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.terms-policies span {
+  padding: 1rem 4rem;
+  cursor: pointer;
+}
+
+.terms-policies span:hover {
+  text-decoration: underline;
+}
+
+.terms-policies span:last-child {
+  border-left: 1px solid black;
+}
 @media screen and (max-width: 990px) {
   .sign-in__login-details {
     width: 100%;

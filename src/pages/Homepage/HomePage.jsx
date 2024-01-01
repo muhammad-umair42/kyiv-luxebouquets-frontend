@@ -1,22 +1,23 @@
 /* eslint-disable react/no-unescaped-entities */
 import Layout from "../../components/Layout/Layout";
-import HeroImg from "../../assets/HeroSectionImg.jpg";
 import "./HomePage.css";
 import WhyUsCard from "./Why-us Card/WhyUsCard";
 import { WhyChooseUs, homePageData } from "./../../Details/Details";
 import { useState } from "react";
 import WifiCalling3Icon from "@mui/icons-material/WifiCalling3";
 import MyLocationIcon from "@mui/icons-material/MyLocation";
-import ShopImg from "../../assets/Shoppic.jpg";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import PinterestIcon from "@mui/icons-material/Pinterest";
 import FacebookOutlinedIcon from "@mui/icons-material/FacebookOutlined";
-import ServiceImg from "../../assets/Servicesimg.jpg";
 import FlowerRating from "../../assets/FlowerRating.png";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import ReviewCarousel from "./../../components/Carousel/ReviewCarousel";
 import CategoryCards from "../../components/Categorycards/CategoryCards";
 import LinkText from "../../components/LinkText/LinkText";
+import Home1 from "../../assets/home1.jpg";
+import Home2 from "../../assets/home2.jpg";
+import Home3 from "../../assets/home3.jpg";
+import { Link } from "react-router-dom";
 const HomePage = () => {
   const [userContact, setUserContact] = useState("");
 
@@ -45,7 +46,7 @@ const HomePage = () => {
 
               <div className="left__bottom--hero --animated-border">
                 <div className="bottom__img --animated-imgShow">
-                  <img src={HeroImg} alt="Img" />
+                  <img src={Home1} alt="Img" />
                 </div>
 
                 <div className="bottom__caption --animated-border">
@@ -76,9 +77,12 @@ const HomePage = () => {
                   {homePageData.aboutUsMessage}
                 </p>
               </div>
-              <div className="btn btn--secondary about__btn link--dynamic-hover --animated-border">
+              <Link
+                to={"/about"}
+                className="btn btn--secondary about__btn link--dynamic-hover --animated-border"
+              >
                 <LinkText>learn more</LinkText>
-              </div>
+              </Link>
             </div>
           </section>
 
@@ -162,7 +166,7 @@ const HomePage = () => {
 
             <div className="contact__right --animated-border">
               <div className="right__img--contact">
-                <img src={ShopImg} alt="Img" className="--animated-imgZoom" />
+                <img src={Home2} alt="Img" className="--animated-imgZoom" />
               </div>
               <div className="right__links-wrapper--contact">
                 <h3 className="--animated-border --aninmated-text">
@@ -195,7 +199,7 @@ const HomePage = () => {
             <div className="services-main">
               <div className="services-main__img">
                 <img
-                  src={ServiceImg}
+                  src={Home3}
                   alt="serviceImg"
                   className="--animated-imgZoom"
                 />
