@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import Layout from "../../components/Layout/Layout";
 import "./HomePage.css";
-import WhyUsCard from "./Why-us Card/WhyUsCard";
+import Cards from "./Why-us Card/Cards";
 import { WhyChooseUs, homePageData } from "./../../Details/Details";
 import { useState } from "react";
 import WifiCalling3Icon from "@mui/icons-material/WifiCalling3";
@@ -95,7 +95,7 @@ const HomePage = () => {
 
             <div className="whyus-right">
               {WhyChooseUs.map((card, index) => (
-                <WhyUsCard key={index} title={card.title} desc={card.desc} />
+                <Cards key={index} title={card.title} desc={card.desc} />
               ))}
             </div>
           </section>
