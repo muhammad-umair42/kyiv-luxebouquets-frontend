@@ -1,18 +1,19 @@
 /* eslint-disable no-unused-vars */
-import "./SignUp.css";
-import LinkText from "./../../../components/LinkText/LinkText";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { makeRequest } from "../../../api/axios";
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { makeRequest } from '../../../api/axios';
+import LinkText from './../../../components/LinkText/LinkText';
+import './SignUp.css';
 
 const SignUp = () => {
   const navigate = useNavigate();
   const [registerInfo, setRegisterInfo] = useState({
-    email: "",
-    password: "",
-    secretAnswer: "",
-    username: "",
-    fullName: "",
+    email: '',
+    password: '',
+    secretAnswer: '',
+    username: '',
+    fullName: '',
   });
 
   const handleSubmit = async e => {
@@ -24,20 +25,20 @@ const SignUp = () => {
         registerInfo.secretAnswer,
         registerInfo.username,
         registerInfo.fullName,
-      ].some(field => field.trim() === "")
+      ].some(field => field.trim() === '')
     ) {
-      return alert("Please fill out all fields");
+      return toast.warn('Please fill out all fields');
     }
     const reqParams = {
-      method: "post",
-      url: "/users/register",
+      method: 'post',
+      url: '/users/register',
       reqData: registerInfo,
-      reqType: "register",
+      reqType: 'register',
     };
     const { resData, success } = await makeRequest(reqParams);
-
     if (success) {
-      navigate("/signin", { replace: true });
+      toast.success(`${resData} Registered Successfully`);
+      navigate('/signin', { replace: true });
     }
   };
   return (

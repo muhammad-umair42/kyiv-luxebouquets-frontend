@@ -127,3 +127,30 @@ export const subscriptionPageCardsDetails = [
     desc: "After entering your contact and delivery information and paying for your subscription, you can sit back and relax,knowing that you have secured a regular supply of fresh stunning flowers for yourself or your loved ones.",
   },
 ];
+
+export const SubscriptionFaq = [
+  {
+    title: "How often will I get a new bouquet?",
+    desc: "Our subscription allow you to select a delivery frequency that best suits your needs - either weekly, bi-weekly, or monthly. You can also choose the number of deliveries for your subscription.Choose any combination that would works for you!",
+  },
+  {
+    title: "Can I send subscription like as a gift?",
+    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex.",
+  },
+  {
+    title: "Can i suspend my subscription to flowers?",
+    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex",
+  },
+  {
+    title: "Can i choose which bouqet i get?",
+    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex",
+  },
+  {
+    title: "Can i change the shipping address.",
+    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex",
+  },
+  {
+    title: "What day will the subscription bouqet comes?",
+    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex.",
+  },
+];

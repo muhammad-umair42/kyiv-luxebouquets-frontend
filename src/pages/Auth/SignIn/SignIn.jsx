@@ -1,14 +1,15 @@
 /* eslint-disable no-unused-vars */
-import LinkText from "./../../../components/LinkText/LinkText";
-import "./SignIn.css";
-import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
-import { makeRequest } from "../../../api/axios";
-import { useDispatch } from "react-redux";
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { makeRequest } from '../../../api/axios';
+import LinkText from './../../../components/LinkText/LinkText';
+import './SignIn.css';
 const SignIn = () => {
   const [loginInfo, setLoginInfo] = useState({
-    username: "",
-    password: "",
+    username: '',
+    password: '',
   });
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -18,24 +19,24 @@ const SignIn = () => {
 
     if (
       [loginInfo.username, loginInfo.password].some(
-        field => field.trim() === "",
+        field => field.trim() === '',
       )
     ) {
-      return alert("Please fill out all fields");
+      return toast.warn('Please fill out all fields');
     }
 
     const reqParams = {
-      method: "post",
-      url: "/users/login",
+      method: 'post',
+      url: '/users/login',
       reqData: loginInfo,
-      reqType: "login",
+      reqType: 'login',
       dispatch: dispatch,
     };
 
     const { resData, success } = await makeRequest(reqParams);
-
     if (success) {
-      // navigate("/");
+      toast.success(`Welcome ${resData}`);
+      navigate('/', { replace: true });
     }
   };
   return (

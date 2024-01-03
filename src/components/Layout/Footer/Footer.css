@@ -19,6 +19,7 @@
   background-color: #6b6b6b;
   color: #a5a4a4;
   border-color: #b8b8b8;
+  pointer-events: none;
 }
 .footer__newsletter {
   display: flex;

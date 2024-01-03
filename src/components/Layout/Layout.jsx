@@ -1,20 +1,21 @@
 /* eslint-disable react/prop-types */
 
-import Footer from "./Footer/Footer"
-import Navbar from "./Navbar/Navbar"
+import Footer from "./Footer/Footer";
+import Navbar from "./Navbar/Navbar";
+import { ToastContainer } from "react-toastify";
 
 const Layout = ({ children }) => {
   return (
     <>
       <div>
         <Navbar />
-        <div id="App" style={{ transition: "all 0.5s ease-in-out" }}>
-          {children}
-        </div>
+
+        {children}
+
         <Footer />
       </div>
     </>
-  )
-}
+  );
+};
 
-export default Layout
+export default Layout;

@@ -121,7 +121,9 @@ h6,
   cursor: pointer;
   border: none;
 }
-
+.--disabled {
+  pointer-events: none !important;
+}
 .btn--primary {
   background-color: #121212;
   color: white !important;

@@ -1,12 +1,14 @@
-import { setUser } from "../app/Slices/userSlice";
+import { setUser } from '../app/Slices/userSlice';
 
-export const dataController = async (reqType, data, dispatch) => {
+export const dataController = (reqType, data, dispatch) => {
   let resData = null;
+
   switch (reqType) {
-    case "register":
-      resData = data.data;
+    case 'register':
+      resData = data.data.user.username;
       break;
-    case "login":
+
+    case 'login':
       dispatch(
         setUser({
           user: data.data.user,
@@ -14,19 +16,32 @@ export const dataController = async (reqType, data, dispatch) => {
           refreshToken: data.data.refreshToken,
         }),
       );
-
+      resData = data.data.user.fullName;
       break;
-    case "getcategories":
+
+    case 'getcategories':
       resData = data.data;
       break;
-    case "specialEmails":
-      resData = data.data.user;
+
+    case 'specialEmails':
+      resData = data.data.user.username;
       dispatch(setUser({ user: resData }));
       break;
-    case "resetpassword":
-      resData = data.data.user;
+
+    case 'resetpassword':
+      resData = data.data.username;
+      break;
+
+    case 'logout':
+      dispatch(setUser({ user: null, accessToken: null, refreshToken: null }));
+      resData = data.message;
+      break;
+    case 'updateprofilepicture':
+      dispatch(setUser({ user: data.data.user }));
+      resData = data.message;
       break;
     default:
+      resData = null;
       break;
   }
   return resData;

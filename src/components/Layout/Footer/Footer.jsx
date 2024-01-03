@@ -1,14 +1,14 @@
 /* eslint-disable no-unused-vars */
-import "./Footer.css";
-import InstagramIcon from "@mui/icons-material/Instagram";
-import PinterestIcon from "@mui/icons-material/Pinterest";
-import FacebookOutlinedIcon from "@mui/icons-material/FacebookOutlined";
-import TextHoverEffect from "../../LinkText/LinkText";
-import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import makeRequest from "../../../api/axios";
-import { useEffect, useState } from "react";
+import FacebookOutlinedIcon from '@mui/icons-material/FacebookOutlined';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import PinterestIcon from '@mui/icons-material/Pinterest';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import makeRequest from '../../../api/axios';
+import TextHoverEffect from '../../LinkText/LinkText';
+import './Footer.css';
 const Footer = () => {
   //States
   const user = useSelector(state => state.user.user);
@@ -20,9 +20,9 @@ const Footer = () => {
   useEffect(() => {
     const fetchData = async () => {
       const reqParams = {
-        url: "/categories/",
-        method: "get",
-        reqType: "getcategories",
+        url: '/categories/',
+        method: 'get',
+        reqType: 'getcategories',
       };
       const { resData, success } = await makeRequest(reqParams);
       if (success) {
@@ -40,18 +40,23 @@ const Footer = () => {
   const handleSpecialEmailsChange = async e => {
     e.preventDefault();
     if (!user) {
-      navigate("/signin", { replace: true });
+      toast.warn('Please Login First');
+      navigate('/signin', { replace: true });
       return null;
     }
     const reqParams = {
-      method: "post",
+      method: 'post',
       reqData: { specialEmails: true },
       dispatch,
-      reqType: "specialEmails",
-      url: "/users/updatespecialemails",
+      reqType: 'specialEmails',
+      url: '/users/updatespecialemails',
     };
 
-    const { reqData, success } = await makeRequest(reqParams);
+    const { resData, success } = await makeRequest(reqParams);
+    if (success) {
+      console.log(`In Footer Success ${resData}`);
+      toast.success(`${resData} is Subscribed to Special Emails`);
+    }
   };
 
   return (
@@ -101,14 +106,14 @@ const Footer = () => {
         <div className="footer__link-social__container">
           <InstagramIcon
             className="footer__link-social__container-icon"
-            style={{ fontSize: "30px" }}
+            style={{ fontSize: '30px' }}
           />
           <PinterestIcon
-            style={{ fontSize: "30px" }}
+            style={{ fontSize: '30px' }}
             className="footer__link-social__container-icon"
           />
           <FacebookOutlinedIcon
-            style={{ fontSize: "30px" }}
+            style={{ fontSize: '30px' }}
             className="footer__link-social__container-icon"
           />
         </div>

@@ -1,16 +1,17 @@
 /* eslint-disable no-unused-vars */
-import { useState } from "react";
-import "./ForgotPassword.css";
-import makeRequest from "../../../api/axios";
-import { useNavigate } from "react-router-dom";
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import makeRequest from '../../../api/axios';
+import './ForgotPassword.css';
 const ForgotPassword = () => {
   //states and variables
   const [resetPasswordInfo, setResetPasswordInfo] = useState({
-    secretAnswer: "",
-    email: "",
-    newPassword: "",
+    secretAnswer: '',
+    email: '',
+    newPassword: '',
   });
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState('');
   const navigate = useNavigate();
   //Handle Form Submit
   const handleSubmit = async e => {
@@ -20,22 +21,23 @@ const ForgotPassword = () => {
         resetPasswordInfo.secretAnswer,
         resetPasswordInfo.email,
         resetPasswordInfo.newPassword,
-      ].some(field => field.trim() === "")
+      ].some(field => field.trim() === '')
     ) {
-      return alert("Please fill out all fields");
+      return toast.warn('Please fill out all fields');
     }
     if (resetPasswordInfo.newPassword !== confirmPassword) {
-      return alert("Passwords do not match");
+      return toast.warn('Passwords do not match');
     }
     const reqParams = {
-      method: "post",
-      url: "/users/forgotpassword",
+      method: 'post',
+      url: '/users/forgotpassword',
       reqData: resetPasswordInfo,
-      reqType: "resetpassword",
+      reqType: 'resetpassword',
     };
     const { resData, success } = await makeRequest(reqParams);
     if (success) {
-      navigate("/signin", { replace: true });
+      toast.success(`${resData} Your Password has been reset`);
+      navigate('/signin', { replace: true });
     }
   };
   return (

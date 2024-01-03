@@ -1,0 +1,148 @@
+.dashboard {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  min-height: 100vh;
+}
+
+.user__details,
+.user__edit,
+.orders {
+  border: 0 solid black;
+  border-width: 0 0 1px 1px;
+}
+
+.user__details {
+  padding: 4rem 1rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+.user__details-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 4rem;
+  padding: 4rem 2rem;
+  background-color: #f5f5f7;
+  border-radius: 1rem;
+  border: 1px solid black;
+}
+
+.user__details-img {
+  height: 20rem;
+  width: 20rem;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: white;
+}
+
+.user__details-img img {
+  height: 100%;
+  width: 100%;
+  object-fit: stretch;
+}
+
+.user__details-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.user__edit {
+  padding: 2rem 1rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.user__edit-wrapper {
+  width: 100%;
+  padding: 0rem 4rem 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.user__edit-imgContainer {
+  padding: 2rem 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 2rem;
+  border-bottom: 1px solid black;
+}
+.user__edit-image {
+  height: 20rem;
+  width: 20rem;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.user__edit-image img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.user__edit-imgContainer-btns {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+}
+
+.user__edit-details {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 2rem;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.user__edit-details form {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 1rem;
+}
+.orders {
+}
+
+@media screen and (max-width: 990px) {
+  .dashboard {
+    height: max-content;
+    grid-template-columns: 1fr;
+  }
+  .user__details,
+  .user__details-wrapper {
+    padding: 0;
+    width: 100%;
+    height: max-content;
+    border-radius: 0;
+  }
+  .user__details-img {
+    min-height: 15rem;
+    width: 100%;
+    border-radius: 0;
+    background-color: #f5f5f7;
+  }
+  .user__details-img img {
+    object-fit: cover;
+  }
+  .user__details-info {
+    padding: 4rem;
+  }
+}

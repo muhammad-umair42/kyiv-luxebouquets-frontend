@@ -1,25 +1,25 @@
 /* eslint-disable react/no-unescaped-entities */
-import Layout from "../../components/Layout/Layout";
-import "./HomePage.css";
-import Cards from "./Why-us Card/Cards";
-import { WhyChooseUs, homePageData } from "./../../Details/Details";
-import { useState } from "react";
-import WifiCalling3Icon from "@mui/icons-material/WifiCalling3";
-import MyLocationIcon from "@mui/icons-material/MyLocation";
-import InstagramIcon from "@mui/icons-material/Instagram";
-import PinterestIcon from "@mui/icons-material/Pinterest";
-import FacebookOutlinedIcon from "@mui/icons-material/FacebookOutlined";
-import FlowerRating from "../../assets/FlowerRating.png";
-import "react-responsive-carousel/lib/styles/carousel.min.css";
-import ReviewCarousel from "./../../components/Carousel/ReviewCarousel";
-import CategoryCards from "../../components/Categorycards/CategoryCards";
-import LinkText from "../../components/LinkText/LinkText";
-import Home1 from "../../assets/home1.jpg";
-import Home2 from "../../assets/home2.jpg";
-import Home3 from "../../assets/home3.jpg";
-import { Link } from "react-router-dom";
+import FacebookOutlinedIcon from '@mui/icons-material/FacebookOutlined';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import MyLocationIcon from '@mui/icons-material/MyLocation';
+import PinterestIcon from '@mui/icons-material/Pinterest';
+import WifiCalling3Icon from '@mui/icons-material/WifiCalling3';
+import { useState } from 'react';
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
+import { Link } from 'react-router-dom';
+import FlowerRating from '../../assets/FlowerRating.png';
+import Home1 from '../../assets/home1.jpg';
+import Home2 from '../../assets/home2.jpg';
+import Home3 from '../../assets/home3.jpg';
+import CategoryCards from '../../components/Categorycards/CategoryCards';
+import Layout from '../../components/Layout/Layout';
+import LinkText from '../../components/LinkText/LinkText';
+import { WhyChooseUs, homePageData } from './../../Details/Details';
+import ReviewCarousel from './../../components/Carousel/ReviewCarousel';
+import './HomePage.css';
+import Cards from './Why-us Card/Cards';
 const HomePage = () => {
-  const [userContact, setUserContact] = useState("");
+  const [userContact, setUserContact] = useState('');
 
   return (
     <>
@@ -78,7 +78,7 @@ const HomePage = () => {
                 </p>
               </div>
               <Link
-                to={"/about"}
+                to={'/about'}
                 className="btn btn--secondary about__btn link--dynamic-hover --animated-border"
               >
                 <LinkText>learn more</LinkText>
@@ -211,9 +211,12 @@ const HomePage = () => {
                 <p className="--black-90 --animated-text">
                   {homePageData.flowerSubcriptionMessage}
                 </p>
-                <div className="services-main__btn btn  btn--secondary link--dynamic-hover --animated-border">
+                <Link
+                  to={'/subscription'}
+                  className="services-main__btn btn  btn--secondary link--dynamic-hover --animated-border"
+                >
                   <LinkText>SUBSCRIBE NOW</LinkText>
-                </div>
+                </Link>
               </div>
             </div>
 

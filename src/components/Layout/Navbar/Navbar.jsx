@@ -1,14 +1,34 @@
-import "./Navbar.css";
-
-import LinkText from "../../LinkText/LinkText";
-import NavHamburger from "./NavHamburger";
-import { useDispatch, useSelector } from "react-redux";
-import { setCartOpen } from "../../../app/Slices/interactionSlice";
-import Cart from "../../Cart/Cart";
-import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import makeRequest from '../../../api/axios';
+import { setCartOpen } from '../../../app/Slices/interactionSlice';
+import Cart from '../../Cart/Cart';
+import LinkText from '../../LinkText/LinkText';
+import NavHamburger from './NavHamburger';
+import './Navbar.css';
 const Navbar = () => {
   const dispatch = useDispatch();
   const user = useSelector(state => state.user.user);
+  const location = useLocation();
+  const currentUrl = location.pathname;
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    const reqParams = {
+      method: 'post',
+      url: '/users/logout',
+      reqType: 'logout',
+      dispatch: dispatch,
+    };
+
+    const { resData, success } = await makeRequest(reqParams);
+    if (success) {
+      toast.success(`${resData}`);
+      navigate('/', { replace: true });
+    }
+  };
+
   return (
     <nav className="navbar">
       <div className="navbar__wrapper">
@@ -16,31 +36,38 @@ const Navbar = () => {
           <div className="left__item  link--dynamic-hover">
             <LinkText>Shop</LinkText>
           </div>
-          <a href="/#contact">
-            {" "}
+          <a href={currentUrl === '/' ? '/#contact' : '/'}>
             <div className="left__item link--dynamic-hover">
-              <LinkText>Contact</LinkText>
+              <LinkText>{currentUrl === '/' ? 'Contact' : 'Home'}</LinkText>
             </div>
           </a>
         </div>
         <div className="wrapper__right">
-          {user.username ? (
+          {user?.username ? (
             <div className="right__item link--dynamic-hover username">
               <LinkText>{user.username}</LinkText>
               <div className="right__item--dropdown">
-                <div className="right__item--dropdown-section">
+                <Link
+                  to={'/userdashboard'}
+                  className="right__item--dropdown-section"
+                >
                   {user.profilePicture && (
                     <div className="--dropdown-section_img">
                       <img src={user.profilePicture} alt="" />
                     </div>
                   )}
                   <b>DASHBOARD</b>
+                </Link>
+                <div
+                  className="right__item--dropdown-section"
+                  onClick={handleLogout}
+                >
+                  Logout
                 </div>
-                <div className="right__item--dropdown-section">Logout</div>
               </div>
             </div>
           ) : (
-            <Link to={"/signin"} className="right__item link--dynamic-hover">
+            <Link to={'/signin'} className="right__item link--dynamic-hover">
               <LinkText>Sign in</LinkText>
             </Link>
           )}
