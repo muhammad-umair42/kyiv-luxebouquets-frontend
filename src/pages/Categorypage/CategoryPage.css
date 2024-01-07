@@ -1,0 +1,30 @@
+.categorypage {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.title {
+  position: sticky;
+  top: 8rem;
+  padding: 8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-height: 88vh;
+  border: 0 solid black;
+  border-width: 0 0 1px 1px;
+}
+
+.title h1 {
+  text-align: center;
+}
+@media screen and (max-width: 990px) {
+  .categorypage {
+    display: flex;
+    flex-direction: column;
+  }
+  .title {
+    position: static;
+    top: 0;
+  }
+}

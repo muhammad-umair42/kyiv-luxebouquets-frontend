@@ -40,6 +40,16 @@ export const dataController = (reqType, data, dispatch) => {
       dispatch(setUser({ user: data.data.user }));
       resData = data.message;
       break;
+    case 'updateuserdetails':
+      dispatch(setUser({ user: data.data.user }));
+      resData = data.message;
+      break;
+    case 'getsinglecategory':
+      resData = data.data;
+      break;
+    case 'getsingleproduct':
+      resData = data.data;
+      break;
     default:
       resData = null;
       break;

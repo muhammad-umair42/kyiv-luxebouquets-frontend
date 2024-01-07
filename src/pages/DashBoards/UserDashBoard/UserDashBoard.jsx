@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import makeRequest from '../../../api/axios';
 import Avatar from '../../../assets/avatar.png';
@@ -61,61 +62,84 @@ const UserDashBoard = () => {
     }
   };
 
+  const handleUserDetailsSubmit = async e => {
+    e.preventDefault();
+    const reqParams = {
+      method: 'post',
+      url: '/users/updateuser',
+      dispatch,
+      reqType: 'updateuserdetails',
+      reqData: newUserDetails,
+    };
+
+    const { resData, success } = await makeRequest(reqParams);
+    if (success) {
+      toast.success(`${resData}`);
+    }
+  };
+
+  const handleSpecialEmailsChange = async (e, val) => {
+    e.preventDefault();
+
+    const reqParams = {
+      method: 'post',
+      reqData: { specialEmails: val },
+      dispatch,
+      reqType: 'specialEmails',
+      url: '/users/updatespecialemails',
+    };
+
+    const { resData, success } = await makeRequest(reqParams);
+    if (success) {
+      toast.success(`${resData} is Subscribed to Special Emails`);
+    }
+  };
+
   return (
     <Layout>
       <section className="dashboard">
-        <section className="user__details">
-          <div className="user__details-wrapper">
-            <div className="user__details-img">
+        <section className="user__img">
+          <h4>Profile Picture</h4>
+          <div className="user__img-imgContainer">
+            <div className="user__img-image">
               <img src={user.profilePicture || Avatar} alt="" />
             </div>
-            <div className="user__details-info">
-              <span className="--overline">Full Name : </span>
-              <span> {user.fullName}</span>
-              <span className="--overline">Username : </span>
-              <span> {user.username}</span>
-              <span className="--overline">Email : </span>
-              <span> {user.email}</span>
+            <div className="user__img-imgContainer-btns">
+              <div
+                className={`btn btn--secondary link--dynamic-hover `}
+                onClick={handleClickProfile}
+              >
+                <LinkText>Upload File</LinkText>
+                <input
+                  type="file"
+                  accept="image/*"
+                  ref={fileInputRef}
+                  style={{ display: 'none' }}
+                  onChange={handleProfileChange}
+                />
+              </div>
+              <div
+                className={`btn btn--primary link--dynamic-hover ${
+                  selectedImage !== null ? '' : '--disabled'
+                }`}
+                onClick={handleProfileUpdate}
+              >
+                <LinkText>
+                  {selectedImage ? 'Update Now' : 'First Upload'}
+                </LinkText>
+              </div>
             </div>
           </div>
         </section>
         <section className="user__edit">
           <h3>{user.fullName}&apos;s Dashboard</h3>
           <div className="user__edit-wrapper">
-            <div className="user__edit-imgContainer">
-              <div className="user__edit-image">
-                <img src={user.profilePicture || Avatar} alt="" />
-              </div>
-              <div className="user__edit-imgContainer-btns">
-                <div
-                  className={`btn btn--secondary link--dynamic-hover `}
-                  onClick={handleClickProfile}
-                >
-                  <LinkText>Upload File</LinkText>
-                  <input
-                    type="file"
-                    accept="image/*"
-                    ref={fileInputRef}
-                    style={{ display: 'none' }}
-                    onChange={handleProfileChange}
-                  />
-                </div>
-                <div
-                  className={`btn btn--primary link--dynamic-hover ${
-                    selectedImage !== null ? '' : '--disabled'
-                  }`}
-                  onClick={handleProfileUpdate}
-                >
-                  <LinkText>
-                    {selectedImage ? 'Update Now' : 'First Upload'}
-                  </LinkText>
-                </div>
-              </div>
-            </div>
             <div className="user__edit-details">
               <h3>Details:</h3>
-              <form action="">
-                <label htmlFor="username">Username:</label>
+              <form action="" onSubmit={handleUserDetailsSubmit}>
+                <label htmlFor="username" className="--subtitle">
+                  Username:
+                </label>
                 <input
                   className="input--primary"
                   type="text"
@@ -128,7 +152,9 @@ const UserDashBoard = () => {
                     })
                   }
                 />
-                <label htmlFor="fullName">Full Name:</label>
+                <label htmlFor="fullName" className="--overline">
+                  Full Name:
+                </label>
                 <input
                   className="input--primary"
                   type="text"
@@ -141,7 +167,9 @@ const UserDashBoard = () => {
                     })
                   }
                 />
-                <label htmlFor="email">Email:</label>
+                <label htmlFor="email" className="--overline">
+                  Email:
+                </label>
                 <input
                   className="input--primary"
                   type="email"
@@ -154,7 +182,7 @@ const UserDashBoard = () => {
                     })
                   }
                 />
-                <label htmlFor="secretAnswer">
+                <label htmlFor="secretAnswer" className="--overline">
                   (Recovery Key:) Your Favourite Hobby?:
                 </label>
                 <input
@@ -169,7 +197,9 @@ const UserDashBoard = () => {
                     })
                   }
                 />
-                <label htmlFor="contact">Contact#:</label>
+                <label htmlFor="contact" className="--overline">
+                  Contact#:
+                </label>
                 <input
                   className="input--primary"
                   type="tel"
@@ -182,7 +212,9 @@ const UserDashBoard = () => {
                     })
                   }
                 />
-                <label htmlFor="address">Address:</label>
+                <label htmlFor="address" className="--overline">
+                  Address:
+                </label>
                 <input
                   className="input--primary"
                   type="text"
@@ -204,8 +236,77 @@ const UserDashBoard = () => {
               </form>
             </div>
           </div>
+
+          <div className="special-emails">
+            {user.specialEmails && (
+              <div className="special-emails__on">
+                <h5>Special Reminders!</h5>
+                <p>
+                  We will remind you to offer beautiful flowers from Kyiv
+                  Florist Studio. Valentines Day, Mothers Day, Christmas...
+                  Reminds you 7 days before. No spam or sharing your address
+                </p>
+                <div
+                  className="btn btn--primary link--dynamic-hover"
+                  onClick={e => handleSpecialEmailsChange(e, false)}
+                >
+                  <LinkText>un subscribe</LinkText>
+                </div>
+              </div>
+            )}
+            {!user.specialEmails && (
+              <div className="special-emails__off">
+                <h5>Special Reminder!</h5>
+                <p>
+                  Remember to offer beautiful flowers from Kyiv Florist Studio.
+                  Valentines Day, Mothers Day, Christmas... Reminds you 7 days
+                  before. No spam or sharing your address
+                </p>
+                <div
+                  className="btn btn--primary link--dynamic-hover"
+                  onClick={e => handleSpecialEmailsChange(e, true)}
+                >
+                  <LinkText>Subscribe Now</LinkText>
+                </div>
+              </div>
+            )}
+          </div>
+          <div className="monthly-subscription">
+            {user?.subscribed?.isSubscribed && (
+              <div className="ms__on">
+                <h5>You are Subscribed to our user.subscribed.planName Plan</h5>
+                <span>
+                  You are having user.subscribed.deliveries deliveries
+                </span>
+                <span>
+                  You have acess to user.subscribed.planName discount on every
+                  item.
+                </span>
+                <div className="btn btn--secondary link--dynamic-hover">
+                  Un Subscribe
+                </div>
+              </div>
+            )}
+            {!user?.subscribed?.isSubscribed && (
+              <div className="ms__off">
+                <h5>Wanna Hear About Our Subscriptions?</h5>
+                <span>
+                  Basic,Seasonal or Premium deliveries on regular basics
+                </span>
+                <span> special discounts on every item.</span>
+                <Link
+                  to={'/subscription'}
+                  className="btn btn--secondary link--dynamic-hover"
+                >
+                  Read More
+                </Link>
+              </div>
+            )}
+          </div>
         </section>
-        <section className="orders"></section>
+        <section className="orders">
+          <h4>Order&lsquo;s History</h4>
+        </section>
       </section>
     </Layout>
   );

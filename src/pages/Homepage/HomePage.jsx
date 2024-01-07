@@ -5,8 +5,10 @@ import MyLocationIcon from '@mui/icons-material/MyLocation';
 import PinterestIcon from '@mui/icons-material/Pinterest';
 import WifiCalling3Icon from '@mui/icons-material/WifiCalling3';
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import FlowerRating from '../../assets/FlowerRating.png';
 import Home1 from '../../assets/home1.jpg';
 import Home2 from '../../assets/home2.jpg';
@@ -20,7 +22,7 @@ import './HomePage.css';
 import Cards from './Why-us Card/Cards';
 const HomePage = () => {
   const [userContact, setUserContact] = useState('');
-
+  const user = useSelector(state => state.user.user);
   return (
     <>
       <Layout>
@@ -120,7 +122,14 @@ const HomePage = () => {
                     minLength={11}
                     maxLength={11}
                   />
-                  <div className="btn btn--primary link--dynamic-hover">
+                  <div
+                    className="btn btn--primary link--dynamic-hover"
+                    onClick={() => {
+                      userContact
+                        ? toast.success('We will contact you soon!')
+                        : toast.error('Privide your contact#');
+                    }}
+                  >
                     <LinkText>reach now</LinkText>
                   </div>
                 </div>
@@ -212,10 +221,18 @@ const HomePage = () => {
                   {homePageData.flowerSubcriptionMessage}
                 </p>
                 <Link
-                  to={'/subscription'}
+                  to={`${
+                    user?.subscribed?.isSubscribed
+                      ? '/userdashboard'
+                      : '/subscription'
+                  }`}
                   className="services-main__btn btn  btn--secondary link--dynamic-hover --animated-border"
                 >
-                  <LinkText>SUBSCRIBE NOW</LinkText>
+                  <LinkText>
+                    {user?.subscribed?.isSubscribed
+                      ? 'UN SUBSCRIBE'
+                      : 'Subscribe now'}
+                  </LinkText>
                 </Link>
               </div>
             </div>
@@ -245,9 +262,6 @@ const HomePage = () => {
               <h2 className="--animated-text">Our Clients Say</h2>
             </div>
             <ReviewCarousel />
-            <div className="btn btn--secondary reviews__btn link--dynamic-hover --animated-border">
-              <LinkText>READ REVIEWS</LinkText>
-            </div>
           </section>
         </div>
       </Layout>

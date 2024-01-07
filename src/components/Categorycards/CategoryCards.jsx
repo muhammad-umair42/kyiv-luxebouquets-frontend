@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import makeRequest from '../../api/axios';
 import TextIconBtn from '../TextIconBtn/TextIconBtn';
 import './CategoryCards.css';
@@ -34,7 +35,8 @@ const CategoryCards = (slice = false) => {
     <>
       {data &&
         data?.map((c, i) => (
-          <div
+          <Link
+            to={`/category/${c._id}`}
             key={c._id}
             className={`categories btn__arrow--dynamic ${
               i % 2 === 0 ? 'categories__even' : 'categories__odd'
@@ -53,7 +55,7 @@ const CategoryCards = (slice = false) => {
                 className="--animated-imgZoom"
               />
             </div>
-          </div>
+          </Link>
         ))}
     </>
   );

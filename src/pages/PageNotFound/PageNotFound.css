@@ -1,0 +1,16 @@
+.pagenotfound {
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border: 0 solid black;
+  border-width: 0 0 1px 1px;
+  gap: 1rem;
+}
+.pagenotfound h1 {
+  font-size: 20rem;
+}
+.pagenotfound .--overline {
+  text-decoration: underline;
+}

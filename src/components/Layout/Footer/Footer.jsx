@@ -4,7 +4,7 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 import PinterestIcon from '@mui/icons-material/Pinterest';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import makeRequest from '../../../api/axios';
 import TextHoverEffect from '../../LinkText/LinkText';
@@ -121,9 +121,9 @@ const Footer = () => {
 
       <div className="footer__shop --animated-border">
         <h5>Shop</h5>
-        <div className="footer__link-text">
+        <Link to={'/categories'} className="footer__link-text">
           <TextHoverEffect>All Products</TextHoverEffect>
-        </div>
+        </Link>
         {footerCategories &&
           footerCategories.map(c => (
             <div className="footer__link-text" key={c._id}>
@@ -132,9 +132,9 @@ const Footer = () => {
           ))}
 
         <h5>Service</h5>
-        <div className="footer__link-text ">
+        <Link to={'/subscription'} className="footer__link-text ">
           <TextHoverEffect>Flower Subcription</TextHoverEffect>
-        </div>
+        </Link>
         <div className="footer__link-text ">
           <TextHoverEffect>Weeding and Reception</TextHoverEffect>
         </div>
@@ -142,12 +142,12 @@ const Footer = () => {
 
       <div className="footer__about --animated-border">
         <h5>About Us</h5>
-        <div className="footer__link-text ">
+        <Link to={'/about'} className="footer__link-text ">
           <TextHoverEffect>Our Story</TextHoverEffect>
-        </div>
-        <div className="footer__link-text">
+        </Link>
+        <Link to={'/about'} className="footer__link-text">
           <TextHoverEffect>Blog</TextHoverEffect>
-        </div>
+        </Link>
         <div className="footer__gap"></div>
         <div className="footer__link-text">
           <TextHoverEffect>Shipping & returns</TextHoverEffect>
