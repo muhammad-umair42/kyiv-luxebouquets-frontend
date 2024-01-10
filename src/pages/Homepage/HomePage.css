@@ -126,7 +126,6 @@
 .contact {
   display: grid;
   grid-template-columns: 50% 50%;
-  height: 50vw;
   overflow: hidden;
 }
 
@@ -209,7 +208,7 @@
 
 .right__img--contact {
   width: 100%;
-  height: 100%;
+  height: 50vw;
   overflow: hidden;
 }
 .right__img--contact img {
@@ -304,7 +303,7 @@
       rgba(18, 18, 18, 0.35),
       rgba(18, 18, 18, 0.35)
     ),
-    url("../../assets/home4.jpg");
+    url('../../assets/home4.jpg');
   background-repeat: no-repeat;
   background-size: auto, cover;
   background-position: center;
@@ -419,7 +418,7 @@
     flex-direction: column-reverse;
     height: max-content;
   }
-  .contact__right {
+  .right__img--contact {
     height: 65vw;
   }
   .left__ourdetails-item--contact .ourdetails-item__wrapper {
@@ -479,6 +478,9 @@
   }
   .services h2:first-child {
     padding: 4rem 1.6rem;
+  }
+  .right__img--contact {
+    height: 85vw;
   }
   .services-main__right {
     padding: 4rem 1.6rem;

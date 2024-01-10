@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   SubscriptionFaq,
   flowerSubscriptionHero,
@@ -23,6 +23,10 @@ const SubscriptionPage = () => {
   const [plan, setPlan] = useState(null);
   const [deliveryFrequency, setDeliveryFrequency] = useState(null);
   const [deliveriesCount, setDeliveriesCount] = useState(1);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <Layout>
       <section className="flower-sub">

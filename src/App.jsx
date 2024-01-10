@@ -6,6 +6,7 @@ import ForgotPassword from './pages/Auth/ForgotPassword/ForgotPassword';
 import SignIn from './pages/Auth/SignIn/SignIn';
 import SignUp from './pages/Auth/SignUp/SignUp';
 import CategoryPage from './pages/Categorypage/CategoryPage';
+import Checkout from './pages/CheckoutPage/Checkout';
 import UserDashBoard from './pages/DashBoards/UserDashBoard/UserDashBoard';
 import HomePage from './pages/Homepage/HomePage';
 import PageNotFound from './pages/PageNotFound/PageNotFound';
@@ -34,6 +35,7 @@ function App() {
             user ? <Navigate to={'/'} replace={true} /> : <ForgotPassword />
           }
         />
+
         <Route
           path="/userdashboard"
           element={
@@ -46,10 +48,20 @@ function App() {
         />
 
         <Route path="/about" element={<About />} />
-        <Route path="/subscription" element={<SubscriptionPage />} />
+        <Route
+          path="/subscription"
+          element={
+            !user?.subscription?.isSubscribed ? (
+              <SubscriptionPage />
+            ) : (
+              <Navigate to={'/'} replace={true} />
+            )
+          }
+        />
         <Route path="/categories" element={<CategoryPage />} />
         <Route path="/category/:id" element={<SingleCategory />} />
         <Route path="/product/:id" element={<Product />} />
+        <Route path="/checkout" element={<Checkout />} />
       </Routes>
     </>
   );

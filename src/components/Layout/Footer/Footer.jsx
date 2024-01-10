@@ -12,6 +12,7 @@ import './Footer.css';
 const Footer = () => {
   //States
   const user = useSelector(state => state.user.user);
+  const [userEmail, setuserEmail] = useState(null);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [footerCategories, setFooterCategories] = useState(null);
@@ -38,6 +39,12 @@ const Footer = () => {
 
   //handle Special Emails user reminder
   const handleSpecialEmailsChange = async e => {
+    if (userEmail === null) {
+      return toast.warn('Please Enter Email');
+    }
+    if (!userEmail.includes('@') || !userEmail.includes('.')) {
+      return toast.warn('Please Enter Valid Email');
+    }
     e.preventDefault();
     if (!user) {
       toast.warn('Please Login First');
@@ -55,7 +62,8 @@ const Footer = () => {
     const { resData, success } = await makeRequest(reqParams);
     if (success) {
       console.log(`In Footer Success ${resData}`);
-      toast.success(`${resData} is Subscribed to Special Emails`);
+      setuserEmail(null);
+      return toast.success(`${resData} Special Email Status Changed`);
     }
   };
 
@@ -70,8 +78,11 @@ const Footer = () => {
         <input
           className="input--primary --animated-border footer--email-input"
           type="text"
-          placeholder="Your Email"
+          placeholder={`${
+            !user?.specialEmails ? 'Your Email' : ' Already Subscribed'
+          }`}
           disabled={user?.specialEmails || false}
+          onChange={e => setuserEmail(e.target.value)}
         />
         <button
           className="btn btn--primary link--dynamic-hover footer--email-btn"
@@ -126,18 +137,22 @@ const Footer = () => {
         </Link>
         {footerCategories &&
           footerCategories.map(c => (
-            <div className="footer__link-text" key={c._id}>
+            <Link
+              to={`/category/${c._id}`}
+              className="footer__link-text"
+              key={c._id}
+            >
               <TextHoverEffect>{c.name}</TextHoverEffect>
-            </div>
+            </Link>
           ))}
 
         <h5>Service</h5>
         <Link to={'/subscription'} className="footer__link-text ">
           <TextHoverEffect>Flower Subcription</TextHoverEffect>
         </Link>
-        <div className="footer__link-text ">
+        <Link to={'/weddings'} className="footer__link-text ">
           <TextHoverEffect>Weeding and Reception</TextHoverEffect>
-        </div>
+        </Link>
       </div>
 
       <div className="footer__about --animated-border">
@@ -149,15 +164,15 @@ const Footer = () => {
           <TextHoverEffect>Blog</TextHoverEffect>
         </Link>
         <div className="footer__gap"></div>
-        <div className="footer__link-text">
+        <Link to={'/shipping'} className="footer__link-text">
           <TextHoverEffect>Shipping & returns</TextHoverEffect>
-        </div>
-        <div className="footer__link-text">
+        </Link>
+        <Link to={'/terms'} className="footer__link-text">
           <TextHoverEffect>Terms & Conditions</TextHoverEffect>
-        </div>
-        <div className="footer__link-text">
+        </Link>
+        <Link to="/policies" className="footer__link-text">
           <TextHoverEffect>Privicy Policy</TextHoverEffect>
-        </div>
+        </Link>
       </div>
     </footer>
   );

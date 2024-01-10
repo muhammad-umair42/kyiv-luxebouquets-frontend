@@ -9,15 +9,29 @@ export const cartSlice = createSlice({
   initialState,
   reducers: {
     addItem: (state, action) => {
-      return {
-        ...state,
-        ...action.payload,
-      };
+      state.cartItems.push(action.payload);
+      console.log(action.payload);
     },
     removeItem: (state, action) => {
-      return {
-        state: state.filter(item => item._id !== action.payload),
-      };
+      const itemIdToRemove = action.payload._id;
+      const indexToRemove = state.cartItems.findIndex(
+        item => String(item._id) === String(itemIdToRemove),
+      );
+
+      if (indexToRemove !== -1) {
+        // Create a new array without the item at the found index
+        const newCartItems = [
+          ...state.cartItems.slice(0, indexToRemove),
+          ...state.cartItems.slice(indexToRemove + 1),
+        ];
+
+        return {
+          ...state,
+          cartItems: newCartItems,
+        };
+      }
+
+      return state;
     },
   },
 });

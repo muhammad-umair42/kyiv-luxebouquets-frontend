@@ -125,9 +125,9 @@ const HomePage = () => {
                   <div
                     className="btn btn--primary link--dynamic-hover"
                     onClick={() => {
-                      userContact
+                      userContact.length === 11
                         ? toast.success('We will contact you soon!')
-                        : toast.error('Privide your contact#');
+                        : toast.error('Privide your Correct Number');
                     }}
                   >
                     <LinkText>reach now</LinkText>

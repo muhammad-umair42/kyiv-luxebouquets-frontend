@@ -290,6 +290,17 @@ h6,
 }
 /* -----------------------------Media-queries------------------------- */
 
+@media screen and (min-width: 1400px) {
+  .link {
+    height: 2.3rem !important;
+    font-size: 2rem;
+    font-weight: 500;
+    line-height: 1.2;
+    text-align: center;
+    overflow: hidden;
+  }
+}
+
 @media screen and (max-width: 520px) {
   h1 {
     font-size: 4rem;

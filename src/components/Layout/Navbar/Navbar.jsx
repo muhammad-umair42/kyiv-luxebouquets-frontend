@@ -33,9 +33,9 @@ const Navbar = () => {
     <nav className="navbar">
       <div className="navbar__wrapper">
         <div className="wrapper__left">
-          <div className="left__item  link--dynamic-hover">
+          <Link to={'/categories'} className="left__item  link--dynamic-hover">
             <LinkText>Shop</LinkText>
-          </div>
+          </Link>
           <a href={currentUrl === '/' ? '/#contact' : '/'}>
             <div className="left__item link--dynamic-hover">
               <LinkText>{currentUrl === '/' ? 'Contact' : 'Home'}</LinkText>
@@ -45,7 +45,7 @@ const Navbar = () => {
         <div className="wrapper__right">
           {user?.username ? (
             <div className="right__item link--dynamic-hover username">
-              <LinkText>{user.username}</LinkText>
+              <LinkText>{user?.username}</LinkText>
               <div className="right__item--dropdown">
                 <Link
                   to={'/userdashboard'}
@@ -82,7 +82,7 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-      <NavHamburger user={user} />
+      <NavHamburger user={user} handleLogout={handleLogout} />
     </nav>
   );
 };

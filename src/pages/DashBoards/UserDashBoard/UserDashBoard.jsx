@@ -80,7 +80,7 @@ const UserDashBoard = () => {
 
   const handleSpecialEmailsChange = async (e, val) => {
     e.preventDefault();
-
+    console.log(val);
     const reqParams = {
       method: 'post',
       reqData: { specialEmails: val },
@@ -91,7 +91,7 @@ const UserDashBoard = () => {
 
     const { resData, success } = await makeRequest(reqParams);
     if (success) {
-      toast.success(`${resData} is Subscribed to Special Emails`);
+      toast.success(`${resData} Special Emails Status Changed`);
     }
   };
 
@@ -282,7 +282,10 @@ const UserDashBoard = () => {
                   You have acess to user.subscribed.planName discount on every
                   item.
                 </span>
-                <div className="btn btn--secondary link--dynamic-hover">
+                <div
+                  className="btn btn--secondary link--dynamic-hover"
+                  onClick={e => handleSpecialEmailsChange(e, false)}
+                >
                   Un Subscribe
                 </div>
               </div>

@@ -12,14 +12,12 @@
   font-size: 4rem;
 }
 
-.singleproduct {
-}
 .singleproduct__product {
   display: grid;
   grid-template-columns: 50% 50%;
 }
 .singleproduct__img {
-  min-height: 80vh;
+  height: 100%;
   width: 100%;
   overflow: hidden;
   border: 0 solid black;
@@ -32,6 +30,7 @@
   object-fit: cover;
 }
 .singleproduct__details {
+  height: 100%;
   border: 0 solid black;
   border-width: 0 0 1px 1px;
   padding: 2rem;
@@ -40,6 +39,11 @@
   justify-content: flex-start;
   flex-direction: column;
   gap: 2rem;
+}
+
+.singleproduct__details-p {
+  width: 100%;
+  word-wrap: break-word;
 }
 
 .product__quantity {
@@ -107,9 +111,98 @@
   height: 100%;
   width: 10vw;
   object-fit: cover;
+  object-position: center;
 }
 
 .selectedcombination {
   border: 2px solid black;
   padding: 1rem;
+}
+
+.singleproduct__similarproducts {
+  padding: 8rem;
+  border: 0 solid black;
+  border-width: 0 0 1px 1px;
+  display: flex;
+  justify-content: center;
+}
+.similarproducts__products {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  padding: 1rem;
+  gap: 1rem;
+  border: 0 solid black;
+  border-width: 0 0 1px 1px;
+}
+.similarproducts__product {
+  border: 1px solid black;
+  cursor: pointer;
+}
+.similarproducts__img {
+  height: 25vw;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+.similarproducts__img img {
+  min-height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.similarproducts__details {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.basket__btn {
+  margin-top: auto;
+}
+
+@media screen and (max-width: 990px) {
+  .singleproduct__product {
+    display: flex;
+    flex-direction: column;
+  }
+  .singleproduct__img {
+    height: 80vh;
+  }
+  .similarproducts__products {
+    grid-template-columns: 1fr 1fr;
+  }
+  .similarproducts__img {
+    height: 65vw;
+  }
+  .combination__img {
+    height: 50vw;
+    width: 50vw;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .singleproduct__details,
+  .singleproduct__carousel,
+  .similarproducts__details {
+    padding: 0px;
+  }
+  .similarproducts__products {
+    grid-template-columns: 1fr;
+  }
+  .similarproducts__img {
+    height: 85vw;
+  }
+  .similarproducts__img img {
+    opacity: 0.7;
+  }
+  .similarproducts__details span {
+    font-size: 4rem;
+    color: black;
+  }
 }

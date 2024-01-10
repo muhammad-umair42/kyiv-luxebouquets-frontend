@@ -1,6 +1,12 @@
-import "./CartItem.css"
+import { useDispatch } from 'react-redux';
+import { removeItem } from '../../../app/Slices/cartSlice';
+import './CartItem.css';
 // eslint-disable-next-line react/prop-types
-const CartItem = ({ name, quantity, img, price }) => {
+const CartItem = ({ _id, name, quantity, img, price }) => {
+  const dispatch = useDispatch();
+  const handleRemoveCartItem = () => {
+    dispatch(removeItem({ _id }));
+  };
   return (
     <div className="cart-item">
       <div className="cart-item__details-container">
@@ -13,9 +19,14 @@ const CartItem = ({ name, quantity, img, price }) => {
           <span className="--overline">${price}</span>
         </div>
       </div>
-      <div className="cart-item__btn btn btn--secondary">remove</div>
+      <div
+        className="cart-item__btn btn btn--secondary"
+        onClick={handleRemoveCartItem}
+      >
+        remove
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default CartItem
+export default CartItem;

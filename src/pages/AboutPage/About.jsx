@@ -1,15 +1,19 @@
-import "./About.css";
-import InstagramIcon from "@mui/icons-material/Instagram";
-import PinterestIcon from "@mui/icons-material/Pinterest";
-import FacebookOutlinedIcon from "@mui/icons-material/FacebookOutlined";
-import About1 from "../../assets/about1.jpg";
-import About2 from "../../assets/about2.jpg";
-import About3 from "../../assets/about3.jpg";
-import About4 from "../../assets/about4.jpg";
-import Layout from "./../../components/Layout/Layout";
-import LinkText from "../../components/LinkText/LinkText";
-import { Link } from "react-router-dom";
+import FacebookOutlinedIcon from '@mui/icons-material/FacebookOutlined';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import PinterestIcon from '@mui/icons-material/Pinterest';
+import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import About1 from '../../assets/about1.jpg';
+import About2 from '../../assets/about2.jpg';
+import About3 from '../../assets/about3.jpg';
+import About4 from '../../assets/about4.jpg';
+import LinkText from '../../components/LinkText/LinkText';
+import Layout from './../../components/Layout/Layout';
+import './About.css';
 const About = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <>
       <Layout>
@@ -103,7 +107,7 @@ const About = () => {
             Explore our collection of exquisite bouquets and surprise your loved
             ones with the perfect gift.Click the button below to start shopping
           </p>
-          <Link to={"/categories"}>
+          <Link to={'/categories'}>
             <button className="btn btn--primary link--dynamic-hover">
               <LinkText>Shop Now</LinkText>
             </button>

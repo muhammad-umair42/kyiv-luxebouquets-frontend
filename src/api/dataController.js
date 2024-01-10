@@ -25,7 +25,8 @@ export const dataController = (reqType, data, dispatch) => {
 
     case 'specialEmails':
       resData = data.data.user.username;
-      dispatch(setUser({ user: resData }));
+      console.log(data);
+      dispatch(setUser({ user: data.data.user }));
       break;
 
     case 'resetpassword':
@@ -48,6 +49,9 @@ export const dataController = (reqType, data, dispatch) => {
       resData = data.data;
       break;
     case 'getsingleproduct':
+      resData = data.data;
+      break;
+    case 'getsimilarproducts':
       resData = data.data;
       break;
     default:
