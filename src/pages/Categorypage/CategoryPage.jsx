@@ -7,7 +7,7 @@ const CategoryPage = () => {
     <Layout>
       <section className="categorypage">
         <div className="title">
-          <h1>Choose a Category</h1>
+          <h1 className="--animated-text">Choose a Category</h1>
         </div>
         <div className="categories-section">
           <CategoryCards />

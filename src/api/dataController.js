@@ -54,6 +54,9 @@ export const dataController = (reqType, data, dispatch) => {
     case 'getsimilarproducts':
       resData = data.data;
       break;
+    case 'getuserorders':
+      resData = data.data.orders;
+      break;
     default:
       resData = null;
       break;

@@ -8,6 +8,7 @@ const SingleCategory = () => {
   const [data, setData] = useState(null);
   let { id } = useParams();
   useEffect(() => {
+    window.scrollTo(0, 0);
     const fetchData = async () => {
       const reqParams = {
         url: `/categories/category/${id}`,
@@ -43,7 +44,11 @@ const SingleCategory = () => {
               className="singlecategory__product "
               key={p._id}
             >
-              <img src={`${p?.productImage}`} alt="" />
+              <img
+                src={`${p?.productImage}`}
+                alt=""
+                className="--animated-imgZoom"
+              />
               <div className="singlecategory__product-details">
                 <span className="--subtitle">{p.name}</span>
                 <span className="--overline">${p.price}</span>

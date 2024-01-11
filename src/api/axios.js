@@ -1,8 +1,9 @@
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { dataController } from './dataController';
+const server = import.meta.env.VITE_SERVER_URL;
 const instance = axios.create({
-  baseURL: 'http://localhost:4000/api/v1', // Replace with your API base URL
+  baseURL: `${server}`, // Replace with your API base URL
   timeout: 10000,
   withCredentials: true, // Set timeout to 5 seconds
   headers: {
@@ -12,7 +13,7 @@ const instance = axios.create({
 });
 
 const fileInstance = axios.create({
-  baseURL: 'http://localhost:4000/api/v1', // Replace with your API base URL
+  baseURL: `${server}`, // Replace with your API base URL
   timeout: 10000,
   withCredentials: true, // Set timeout to 5 seconds
   headers: {

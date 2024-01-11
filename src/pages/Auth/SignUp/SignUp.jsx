@@ -1,12 +1,15 @@
 /* eslint-disable no-unused-vars */
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { makeRequest } from '../../../api/axios';
 import LinkText from './../../../components/LinkText/LinkText';
 import './SignUp.css';
 
 const SignUp = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const navigate = useNavigate();
   const [registerInfo, setRegisterInfo] = useState({
     email: '',
@@ -121,8 +124,12 @@ const SignUp = () => {
           </form>
         </div>
         <div className="terms-policies">
-          <span className="--overline">Privacy Policy</span>
-          <span className="--overline">Terms And Conditions</span>
+          <Link to={'/privacy'} className="--overline">
+            Privacy Policy
+          </Link>
+          <Link to={'/terms'} className="--overline">
+            Terms And Conditions
+          </Link>
         </div>
       </div>
     </div>

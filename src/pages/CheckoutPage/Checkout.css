@@ -1,0 +1,129 @@
+.checkout {
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+.checkout__user-forms {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  padding: 2rem;
+  gap: 2rem;
+  border: 0 solid black;
+  border-width: 0 0 1px 1px;
+}
+
+.checkout__notifications {
+}
+
+.checkout__navigation {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 1rem;
+  gap: 1rem;
+}
+
+.checkout__information h5,
+.checkout__shipping h5,
+.checkout__payment h5 {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  cursor: pointer;
+}
+
+.checkout__information,
+.checkout__shipping,
+.checkout__payment {
+  width: 100%;
+  padding: 2rem 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 1rem;
+  border-bottom: 1px solid #808080;
+}
+
+.checkout__information .btn,
+.checkout__shipping .btn,
+.checkout__payment .btn {
+  width: 100%;
+}
+
+.checkout__payment-inputs {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 2rem;
+}
+
+.checkout__cart {
+  border: 0 solid black;
+  border-width: 0 0 1px 1px;
+}
+
+@media screen and (max-width: 990px) {
+  .checkout {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .checkout__navigation,
+  .checkout__notifications {
+    width: 100%;
+    flex-direction: column;
+  }
+  .checkout__user-forms {
+    padding: 0;
+  }
+  .checkout__information,
+  .checkout__shipping,
+  .checkout__payment {
+    padding: 2rem 0;
+  }
+}
+
+.checkout__cart {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.checkout__cart-total {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.cart-total__subtotal,
+.cart-total__total {
+  padding: 1rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  border-bottom: 1px solid #808080;
+}
+
+.checkout__footer,
+.checkout__footer span {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}

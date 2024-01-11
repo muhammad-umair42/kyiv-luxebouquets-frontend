@@ -13,7 +13,6 @@ import PageNotFound from './pages/PageNotFound/PageNotFound';
 import Product from './pages/Product/Product';
 import SingleCategory from './pages/SingleCategory/SingleCategory';
 import SubscriptionPage from './pages/SubscriptionPage/SubscriptionPage';
-
 function App() {
   const user = useSelector(state => state.user.user);
   return (

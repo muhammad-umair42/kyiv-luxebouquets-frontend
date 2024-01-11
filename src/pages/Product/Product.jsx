@@ -83,17 +83,23 @@ const Product = () => {
     <Layout>
       <section className="singleproduct">
         <div className="singleproduct__product">
-          <div className="singleproduct__img">
-            <img src={product?.productImage} alt="Product Image" />
+          <div className="singleproduct__img --animated-border">
+            <img
+              src={product?.productImage}
+              alt="Product Image "
+              className="--animated-imgZoom"
+            />
           </div>
-          <div className="singleproduct__details">
-            <b>/ {product?.name}</b>
-            <h3>
+          <div className="singleproduct__details --animated-border">
+            <b className="--animated-text">/ {product?.name}</b>
+            <h3 className="--animated-text">
               {product?.name} - ${product?.price}
             </h3>
-            <p className="singleproduct__details-p">{product?.description}</p>
-            <div className="product__quantity">
-              <span>Quantity</span>
+            <p className="singleproduct__details-p --animated-text">
+              {product?.description}
+            </p>
+            <div className="product__quantity ">
+              <span className="--animated-text">Quantity</span>
               <div className="quantity__btns">
                 <span
                   className="quantity__btn"
@@ -103,7 +109,7 @@ const Product = () => {
                 >
                   -
                 </span>
-                <span className="quantity">{quantity}</span>
+                <span className="quantity --animated-text">{quantity}</span>
                 <span
                   className="quantity__btn"
                   onClick={e =>
@@ -116,7 +122,7 @@ const Product = () => {
             </div>
             {product?.combinations.length !== 0 && (
               <div className="singleproduct__carousel">
-                <h5>Excellent Combination with:</h5>
+                <h5 className="--animated-text">Excellent Combination with:</h5>
 
                 <Carousel
                   showArrows={true}
@@ -167,7 +173,7 @@ const Product = () => {
             </div>
           </div>
         </div>
-        <div className="singleproduct__similarproducts">
+        <div className="singleproduct__similarproducts --animated-border">
           <h3>You may also like</h3>
         </div>
         <div className="similarproducts__products">

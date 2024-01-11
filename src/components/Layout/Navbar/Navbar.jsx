@@ -51,11 +51,6 @@ const Navbar = () => {
                   to={'/userdashboard'}
                   className="right__item--dropdown-section"
                 >
-                  {user.profilePicture && (
-                    <div className="--dropdown-section_img">
-                      <img src={user.profilePicture} alt="" />
-                    </div>
-                  )}
                   <b>DASHBOARD</b>
                 </Link>
                 <div

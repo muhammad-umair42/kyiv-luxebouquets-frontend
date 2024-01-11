@@ -14,7 +14,6 @@ const NavHamburger = ({ user, handleLogout }) => {
   const dispatch = useDispatch();
   const navOpen = useSelector(state => state.interaction.navOpen);
   const currentUrl = window.location.pathname;
-  console.log(currentUrl);
   return (
     <div className="hamburger">
       <div className="hamburger__menu-option">

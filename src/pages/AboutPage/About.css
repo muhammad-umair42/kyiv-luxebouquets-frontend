@@ -29,6 +29,7 @@
 .gifts__img,
 .special__img {
   height: 50vw;
+  overflow: hidden;
 }
 
 .hero__img img,

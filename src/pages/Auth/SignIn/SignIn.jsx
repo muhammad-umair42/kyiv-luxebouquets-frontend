@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
@@ -7,6 +7,9 @@ import { makeRequest } from '../../../api/axios';
 import LinkText from './../../../components/LinkText/LinkText';
 import './SignIn.css';
 const SignIn = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const [loginInfo, setLoginInfo] = useState({
     username: '',
     password: '',
@@ -94,8 +97,12 @@ const SignIn = () => {
           </div>
         </div>
         <div className="terms-policies">
-          <span className="--overline">Privacy Policy</span>
-          <span className="--overline">Terms And Conditions</span>
+          <Link to={'/privacy'} className="--overline">
+            Privacy Policy
+          </Link>
+          <Link to={'/conditions'} className="--overline">
+            Terms And Conditions
+          </Link>
         </div>
       </div>
     </div>

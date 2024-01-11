@@ -243,6 +243,7 @@ h6,
   animation: animated-imgShow 1.5s;
   transform-origin: bottom;
 }
+
 .--animated-imgZoom {
   animation: animated-imgZoom 1s;
 }

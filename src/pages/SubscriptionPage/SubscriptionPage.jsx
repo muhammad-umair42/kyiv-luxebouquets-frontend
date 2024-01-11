@@ -17,6 +17,7 @@ import './SubscriptionPage.css';
 
 import NorthEastIcon from '@mui/icons-material/NorthEast';
 import SouthEastIcon from '@mui/icons-material/SouthEast';
+import { toast } from 'react-toastify';
 
 const SubscriptionPage = () => {
   const [faqQuestionNumber, setFaqQuestionNumber] = useState(null);
@@ -30,20 +31,23 @@ const SubscriptionPage = () => {
   return (
     <Layout>
       <section className="flower-sub">
-        <div className="flower-sub__img">
-          <img src={SubImg2} alt="" />
+        <div className="flower-sub__img --animated-border">
+          <img src={SubImg2} alt="" className="--animated-imgZoom" />
         </div>
-        <div className="flower-sub__details">
-          <h2>Flower Subscription</h2>
+        <div className="flower-sub__details --animated-text">
+          <h2 className="--">Flower Subscription</h2>
           {flowerSubscriptionHero.map((bullet, i) => (
             <div className="flower-sub__bullet" key={i}>
               <span className="--subtitle">{bullet.title}</span>
               <p className="--caption">&#x2022;{bullet.desc}</p>
             </div>
           ))}
-          <div className="flower-sub__btn btn btn--secondary link--dynamic-hover">
+          <a
+            href={'#plans'}
+            className="flower-sub__btn btn btn--secondary link--dynamic-hover"
+          >
             <LinkText>Explore Plans</LinkText>
-          </div>
+          </a>
         </div>
       </section>
       <section className="sub-working">
@@ -56,12 +60,12 @@ const SubscriptionPage = () => {
           ))}
         </div>
       </section>
-      <section className="sub-plans">
+      <section className="sub-plans" id="plans">
         <div className="sub-plans__details">
           <div className="sub-plans__headings">
             <span className="--overline">BUILD YOUR SUBSCRIPTION</span>
-            <h2>Selecting a Plan</h2>
-            <p className="--black-90">
+            <h2 className="--animated-text">Selecting a Plan</h2>
+            <p className="--black-90 --animated-text">
               Enjoy free shipping on every order and save upto 30%.Every Bouquet
               we deliver is carefully currated to ensure it arrives fresh and
               stunning.To modify,pause,or cancel your subscription,simply log in
@@ -70,7 +74,7 @@ const SubscriptionPage = () => {
             </p>
           </div>
           <div className="sub-plans__cards">
-            <div className="sub-plans__card">
+            <div className="sub-plans__card --animated-text">
               <div
                 className={`sub-plan__card-top ${
                   plan == 'seasonal' || plan == 'premium' ? '--filter-grey' : ''
@@ -97,7 +101,7 @@ const SubscriptionPage = () => {
                 <LinkText>select</LinkText>
               </div>
             </div>
-            <div className="sub-plans__card">
+            <div className="sub-plans__card --animated-text">
               <div
                 className={`sub-plan__card-top ${
                   plan == 'classic' || plan == 'premium' ? '--filter-grey' : ''
@@ -127,7 +131,7 @@ const SubscriptionPage = () => {
                 <LinkText>select</LinkText>
               </div>
             </div>
-            <div className="sub-plans__card">
+            <div className="sub-plans__card --animated-text">
               <div
                 className={`sub-plan__card-top ${
                   plan == 'classic' || plan == 'seasonal' ? '--filter-grey' : ''
@@ -226,6 +230,7 @@ const SubscriptionPage = () => {
           <div
             className="sub-plan__checkout btn btn--primary link--dynamic-hover"
             disabled={deliveryFrequency == null ? true : false}
+            onClick={() => toast.warn('This feature is not available yet')}
           >
             <LinkText>checkout</LinkText>
           </div>
@@ -234,7 +239,7 @@ const SubscriptionPage = () => {
           <img src={SubImg1} alt="" />
         </div>
       </section>
-      <section className="faq">
+      <section className="faq --animated-imgZoom">
         <div className="faq__wrapper">
           <h2>Subscription FAQ</h2>
           <div className="faq__questions-wrapper">

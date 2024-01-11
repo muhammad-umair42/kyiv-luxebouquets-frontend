@@ -10,7 +10,6 @@ export const cartSlice = createSlice({
   reducers: {
     addItem: (state, action) => {
       state.cartItems.push(action.payload);
-      console.log(action.payload);
     },
     removeItem: (state, action) => {
       const itemIdToRemove = action.payload._id;

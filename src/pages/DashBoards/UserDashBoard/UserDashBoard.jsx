@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -9,6 +10,7 @@ import LinkText from '../../../components/LinkText/LinkText';
 import './UserDashBoard.css';
 
 const UserDashBoard = () => {
+  const [orders, setOrders] = useState(null);
   const user = useSelector(state => state.user.user);
   const [selectedImage, setSelectedImage] = useState(null);
   const fileInputRef = useRef(null);
@@ -27,8 +29,22 @@ const UserDashBoard = () => {
   };
   useEffect(() => {
     // Log the state after it's updated
-    console.log('Selected Image State:', selectedImage);
-  }, [selectedImage]);
+    window.scrollTo(0, 0);
+    const reqParams = {
+      method: 'get',
+      url: '/orders/getorders',
+      dispatch,
+      reqType: 'getuserorders',
+    };
+
+    const FetchData = async () => {
+      const { resData, success } = await makeRequest(reqParams);
+      if (success) {
+        setOrders(resData);
+      }
+    };
+    FetchData();
+  }, []);
 
   const handleProfileChange = event => {
     const file = event.target.files[0];
@@ -97,12 +113,16 @@ const UserDashBoard = () => {
 
   return (
     <Layout>
-      <section className="dashboard">
-        <section className="user__img">
+      <section className="dashboard ">
+        <section className="user__img --animated-border">
           <h4>Profile Picture</h4>
           <div className="user__img-imgContainer">
             <div className="user__img-image">
-              <img src={user.profilePicture || Avatar} alt="" />
+              <img
+                src={user.profilePicture || Avatar}
+                alt=""
+                className="--animated-imgZoom"
+              />
             </div>
             <div className="user__img-imgContainer-btns">
               <div
@@ -131,8 +151,8 @@ const UserDashBoard = () => {
             </div>
           </div>
         </section>
-        <section className="user__edit">
-          <h3>{user.fullName}&apos;s Dashboard</h3>
+        <section className="user__edit --animated-border">
+          <h3 className="--animated-text">{user.fullName}&apos;s Dashboard</h3>
           <div className="user__edit-wrapper">
             <div className="user__edit-details">
               <h3>Details:</h3>
@@ -141,7 +161,7 @@ const UserDashBoard = () => {
                   Username:
                 </label>
                 <input
-                  className="input--primary"
+                  className="input--primary --animated-border"
                   type="text"
                   value={newUserDetails.username}
                   name="username"
@@ -156,7 +176,7 @@ const UserDashBoard = () => {
                   Full Name:
                 </label>
                 <input
-                  className="input--primary"
+                  className="input--primary --animated-border"
                   type="text"
                   value={newUserDetails.fullName}
                   name="fullName"
@@ -171,7 +191,7 @@ const UserDashBoard = () => {
                   Email:
                 </label>
                 <input
-                  className="input--primary"
+                  className="input--primary --animated-border"
                   type="email"
                   value={newUserDetails.email}
                   name="email"
@@ -186,7 +206,7 @@ const UserDashBoard = () => {
                   (Recovery Key:) Your Favourite Hobby?:
                 </label>
                 <input
-                  className="input--primary"
+                  className="input--primary --animated-border"
                   type="text"
                   value={newUserDetails.secretAnswer}
                   name="secretAnswer"
@@ -201,7 +221,7 @@ const UserDashBoard = () => {
                   Contact#:
                 </label>
                 <input
-                  className="input--primary"
+                  className="input--primary --animated-border"
                   type="tel"
                   value={newUserDetails.contact}
                   name="contact"
@@ -216,7 +236,7 @@ const UserDashBoard = () => {
                   Address:
                 </label>
                 <input
-                  className="input--primary"
+                  className="input--primary --animated-border"
                   type="text"
                   value={newUserDetails.address}
                   name="address"
@@ -237,9 +257,9 @@ const UserDashBoard = () => {
             </div>
           </div>
 
-          <div className="special-emails">
+          <div className="special-emails --animated-border">
             {user.specialEmails && (
-              <div className="special-emails__on">
+              <div className="special-emails__on ">
                 <h5>Special Reminders!</h5>
                 <p>
                   We will remind you to offer beautiful flowers from Kyiv
@@ -271,7 +291,7 @@ const UserDashBoard = () => {
               </div>
             )}
           </div>
-          <div className="monthly-subscription">
+          <div className="monthly-subscription --animated-border">
             {user?.subscribed?.isSubscribed && (
               <div className="ms__on">
                 <h5>You are Subscribed to our user.subscribed.planName Plan</h5>
@@ -307,8 +327,21 @@ const UserDashBoard = () => {
             )}
           </div>
         </section>
-        <section className="orders">
+        <section className="orders --animated-border">
           <h4>Order&lsquo;s History</h4>
+          {orders?.map((order, i) => (
+            <div className="order --animated-border" key={order?._id}>
+              <span>Order#:{i + 1}</span>
+              {order?.products?.map(product => (
+                <div className="product" key={product?._id}>
+                  <span className="--overline">Name: {product?.id.name}</span>
+                  <span>quantity: {product?.quantity}</span>
+                </div>
+              ))}
+              <span className="--overline">Total: {order?.total}</span>
+              <span className="--overline">Status: {order?.status}</span>
+            </div>
+          ))}
         </section>
       </section>
     </Layout>
