@@ -21,6 +21,7 @@ export const dataController = (reqType, data, dispatch) => {
 
     case 'getcategories':
       resData = data.data;
+      console.log('Categories Recieved', resData);
       break;
 
     case 'specialEmails':

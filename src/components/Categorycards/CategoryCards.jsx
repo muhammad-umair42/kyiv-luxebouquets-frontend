@@ -10,7 +10,7 @@ const CategoryCards = (slice = false) => {
 
   //Getting categories
   useEffect(() => {
-    return async () => {
+    const fetchData = async () => {
       const reqParams = {
         url: '/categories/',
         method: 'get',
@@ -21,16 +21,18 @@ const CategoryCards = (slice = false) => {
 
       if (slice === true) {
         if (resData.length > 5) {
-          setData(resData.splice(0, 5));
+          await setData(resData.splice(0, 5));
           // console.log(resData);
         } else {
-          setData(resData);
+          await setData(resData);
         }
       } else {
-        setData(resData);
+        await setData(resData);
       }
+      console.log('Data In Category Cards', data);
     };
-  }, []);
+    fetchData();
+  }, [slice]);
   return (
     <>
       {data &&
