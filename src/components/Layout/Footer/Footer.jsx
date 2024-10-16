@@ -27,7 +27,7 @@ const Footer = () => {
       };
       const { resData, success } = await makeRequest(reqParams);
       if (success) {
-        if (resData.length > 8) {
+        if (resData?.length > 8) {
           setFooterCategories(resData.splice(0, 8));
         } else {
           setFooterCategories(resData);
